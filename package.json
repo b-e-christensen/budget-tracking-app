@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "express-handlebars": "^6.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "name": "budget-tracking-app",
+  "description": "Expense tracker",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"hello world\"",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-e-christensen/budget-tracking-app.git"
+  },
+  "keywords": [
+    "expense",
+    "budget",
+    "tracker"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/b-e-christensen/budget-tracking-app/issues"
+  },
+  "homepage": "https://github.com/b-e-christensen/budget-tracking-app#readme"
+}
