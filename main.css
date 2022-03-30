@@ -1,0 +1,87 @@
+/*Universal Selector*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    }
+
+*:before,
+*:after {
+    box-sizing: border-box;
+  }
+  
+  /*Eement Selectors */
+  
+  body {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    font-family: "Arial, sans-serif";
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh; 
+    background-color: #eeffee;
+  }
+  
+  body, html{
+    margin: 0;
+    padding: 0;
+        
+  }
+  
+  body::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #1e1e24;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #e28e2d;
+  }
+
+
+/* Class Selectors */
+.header {
+  font-size: 20pt;
+  font-weight: bold;
+  color: #000000;
+  padding: 30px;
+  background-color: #adadad;
+  border-bottom: 6pt solid #000000;
+}
+
+.hero {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    background-color: #85BB65;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+  }
+  
+.footer {
+    bottom: 0;
+    width: 100%;
+    clear: both;
+    font-family: "Arial", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+      sans-serif;
+    text-align: center;
+    background-color: #8d949e;
+    padding-top: 15pt;
+    border-top: 3pt solid #000000;
+  }
+  
+.footer h2 {
+    font-size: 20px;
+  }
+
+.footer p {
+    padding-bottom: 25pt;
+  }
+  
+  
+  
+  
