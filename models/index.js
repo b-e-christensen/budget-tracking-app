@@ -31,3 +31,10 @@ Budget.hasOne(Expense, {
 Expense.belongsTo(Budget, {
     foreignKey: 'budget_id'
 })
+
+module.exports = {
+    Budget, 
+    Expense, 
+    Income, 
+    User
+}
