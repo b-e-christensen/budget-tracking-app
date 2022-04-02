@@ -1,7 +1,7 @@
 const router = require('express').Router();
-// const { User } = require('../../models'); To ADD
+const {User}  = require('../../models'); 
 
-// POST handler for user login 
+// POST handler for user logins 
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
-      res.json({ user: userData, message: 'You are now logged in!' });
+      res.json({ user: userData.email, message: 'You are now logged in!' });
     });
 
   } catch (err) {
@@ -74,7 +74,7 @@ router.post('/register', async (req, res) => {
         return
     }
     // SQL insert 
-    await User.create({ name: userName, email: userEmail, password: password });
+    await User.create({ username: userName, email: userEmail, password: password }).then(response => res.json({success: true, user_created: userName})).catch(err => res.json({error: true, message: err.message}));
 
 });
 
