@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
   /* 
   Dev notes to be deleted
   POST JSON looks like 
-  {"budget_name": "test3", "budget_amount": "a1", "target_date": 243}
+  {"budget_name": "test3", "budget_amount": 1337, "target_date": 243}
   */
   const budgetName = req.body.budget_name;
   const budgetAmount = Number(req.body.budget_amount);
