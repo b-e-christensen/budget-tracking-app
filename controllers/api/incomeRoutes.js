@@ -1,25 +1,28 @@
 const router = require('express').Router();
-// const Income = require('../../models'); ONCE this is real
+const {Income} = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET income that ties to users Auth 
-router.get('/', async (req, res) => {
-  res.send("TO DO return income")
+router.get('/', withAuth, async (req, res) => {
+  const userId = req.session.user_id
+  const income = await Income.findAll({ where: {user_id: userId}
+  }).then(result => res.json(result))
+  
 });
 
 // Create new income
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   const salary = Number(req.body.salary);
   // Error check budget amount
   if (!salary && typeof salary !== 'number') {
     res.send("Error: Must provide a numerical income amount")
     return
   }
-  // TO DO SQL 
-  res.send("ok")
+  await Income.create({salary: req.body.salary, user_id: req.session.user_id}).then(res.json({created: true}))
 });
 
 // Update by salary ID
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', withAuth, async (req, res, next) => {
   // update a category by its `id` value
   await Income.update({
     // TO DO
