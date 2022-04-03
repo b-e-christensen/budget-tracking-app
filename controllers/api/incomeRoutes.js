@@ -25,22 +25,34 @@ router.post('/', withAuth, async (req, res) => {
 router.put('/:id', withAuth, async (req, res, next) => {
   // update a category by its `id` value
   await Income.update({
-    // TO DO
+    salary: req.body.salary
   },
     {
-      where: { id: req.params.id }
-    }).then(result => res.json({ success: true, salary: req.body.salary })
-    ).catch(next)
+      where: { id: req.params.id, user_id: req.session.user_id }
+    }).then(result => { if (result[0] === 1) {
+      res.json({ success: true, salary: req.body.salary })
+    } else {
+      res.json({ success: false})
+    }
+  }
+    ).catch(err => {console.log(err)})
 });
 
 // DELETE by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   // Delete a salary by its `id` value
-  await Budget.destroy({
+  await Income.destroy({
     where: {
-      id: req.params.id
+      id: req.params.id, user_id: req.session.user_id
     }
-  }).then(success => res.json({deleted: true}))
+  }).then(success => {
+    console.log(success)
+    if(success === 1){
+    res.json({deleted: true})
+  } else {
+    res.json({deleted: false})
+  }
+  })
   .catch(console.error("Delete failed"))
 });
 
