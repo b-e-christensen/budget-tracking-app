@@ -22,7 +22,6 @@ Budget.belongsTo(Income, {
     foreignKey: 'income_id'
 })
 
-
 Budget.hasOne(Expense, {
     foreignKey: 'budget_id',
     onDelete: 'CASCADE' 
