@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 // GET all expenses -- should return all of the user's budget - only that users Auth 
 router.get('/', withAuth, async (req, res) => {
   const userId = req.session.user_id
-  const income = await Expense.findAll({ where: {user_id: userId}
+  const expense = await Expense.findAll({ where: {user_id: userId}
   }).then(result => res.json(result))
 });
 
