@@ -31,7 +31,7 @@ Budget.init(
     },
     food: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     savings: {
         type: DataTypes.INTEGER,
@@ -40,12 +40,12 @@ Budget.init(
     // general utilities along with cell phone bills, subscription services, etc..
     utilities: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     // general 'free spending.' going out, buying clothes, travel, entertainment
     personal: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     user_id: {
         type: DataTypes.INTEGER,
