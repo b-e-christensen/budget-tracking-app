@@ -1,0 +1,22 @@
+[
+    {
+        "salary": 80000,
+        "user_id": 1
+    },
+    {
+        "salary": 75000,
+        "user_id": 2
+    },
+    {
+        "salary": 70000,
+        "user_id": 3
+    },
+    {
+        "salary": 90000,
+        "user_id": 4
+    },
+    {
+        "salary": 85000,
+        "user_id": 5
+    }
+]

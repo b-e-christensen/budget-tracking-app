@@ -18,6 +18,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"hello world\"",
+    "seed": "node seeds/seed.js",
     "watch": "nodemon server.js"
   },
   "repository": {
