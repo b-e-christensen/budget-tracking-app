@@ -16,41 +16,41 @@ Budget.init(
         type: DataTypes.STRING,
         allowNull: false
     },
-    // take in number from user -- asking for a percent. Take the number they input and divide by 100 (couldn't find a percent DataType)
+
     housing: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.INTEGER,
         allowNull: true
     },
     insurance: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.INTEGER,
         allowNull: true
     },
     transportation: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.INTEGER,
         allowNull: true
     },
     food: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     savings: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.INTEGER,
         allowNull: true
     },
     // general utilities along with cell phone bills, subscription services, etc..
     utilities: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     // general 'free spending.' going out, buying clothes, travel, entertainment
     personal: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
-    income_id: {
+    user_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'income',
+          model: 'user',
           key: 'id',
         },
     },  

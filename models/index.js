@@ -13,22 +13,22 @@ Income.belongsTo(User, {
     foreignKey: 'user_id'
 })
 
-Income.hasOne(Budget, {
-    foreignKey: 'income_id',
+User.hasMany(Budget, {
+    foreignKey: 'user_id',
     onDelete: 'CASCADE' 
 })
 
-Budget.belongsTo(Income, {
-    foreignKey: 'income_id'
+Budget.belongsTo(User, {
+    foreignKey: 'user_id'
 })
 
-Budget.hasOne(Expense, {
-    foreignKey: 'budget_id',
+User.hasOne(Expense, {
+    foreignKey: 'user_id',
     onDelete: 'CASCADE' 
 })
 
-Expense.belongsTo(Budget, {
-    foreignKey: 'budget_id'
+Expense.belongsTo(User, {
+    foreignKey: 'user_id'
 })
 
 module.exports = {
