@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-6">
+
+    <h2>MONTHLY EXPENSES</h2>
+
+    <form class="form Monthly Expenses">
+        <div class="form-group">
+            <label for="MONTHLY EXPENSES"></label>
+            {{!-- <input class="form-input" type="text" id="monthly-expenses"> --}}
+        </div>
+    </form>
+
+    
+<label for="bills">Choose an expense:</label>
+<select id="expenses">
+  <option value="housing">Housing</option>
+  <option value="insurance">Insurance</option>
+  <option value="transportation">Transportation</option>
+  <option value="food">Food</option>
+  <option value="savings">Savings</option>
+  <option value="utilities">Utilities</option>
+  <option value="personal">Personal</option>
+</select>
+<form action="/action_page.php">
+  <label for="amount">Cost of Expense:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<button type="button">Adding more Expenses? Click Here!</button>
+
