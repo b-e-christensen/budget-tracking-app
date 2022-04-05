@@ -46,10 +46,10 @@ Expense.init(
         type: DataTypes.INTEGER,
         allowNull: false
     },    
-    budget_id: {
+    user_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'budget',
+          model: 'user',
           key: 'id',
         },
     },
