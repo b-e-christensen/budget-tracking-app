@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const Expense = require('../../models'); ONCE this is real
+const {Expense} = require('../../models');
 
 // GET all expenses -- should return all of the user's budget - only that users Auth 
 router.get('/', async (req, res) => {
@@ -8,28 +8,41 @@ router.get('/', async (req, res) => {
 
 // Create new Budget
 router.post('/', async (req, res) => {
+  const approvedCategories = ["housing", "insurance", "transportation", "food", "savings", "utilities", "personal"]
+
   const expenseName = req.body.expense_name;
   const expenseAmount = Number(req.body.expense_amount);
   const category = req.body.category;
-  const vendor = req.body.vendor;
-  const date = req.body.date;
+  // const vendor = req.body.vendor;
+  // const date = req.body.date;
   // Error check for expense name 
   if (!expenseName) {
-    res.send("Error: Must provide a expense name")
+    res.json({error: "Must provide a expense name"})
     return
   }
   // Error check expense amount
   if (!expenseAmount && typeof expenseAmount !== 'number') {
-    res.send("Error: Must provide a expense amount")
+    res.json({error: "Must enter a expense amount"})
     return
   }
   // Error check for target date  TO DO - once we see date format better error checking 
-  if (!targetDate) {
-    res.send("Error: Must provide a date")
+  // if (!targetDate) {
+  //   res.send("Error: Must provide a date")
+  //   return
+  // }
+  if(!category || !(approvedCategories.indexOf(category) > -1)) {
+    res.json({error: "Must use a category"})
     return
   }
-  // TO DO SQL 
-  res.send("ok")
+  await Expense.create({name: expenseName, category: expenseAmount, user_id: req.session.user_id}).then(success => {
+    if(success === 1){
+      res.json({created: true})
+    } else {
+      res.json({error: "An error occurred inserting expense"})
+    }
+  })
+
+
 });
 
 // GET expense by Id 

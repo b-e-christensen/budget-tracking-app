@@ -1,13 +1,14 @@
 const router = require('express').Router();
-// const Budget = require('../../models'); ONCE this is real
+const {Budget} = require('../../models'); 
+const withAuth = require('../../utils/auth');
 
 // GET all budgets -- should return all of the user's budget - only that users Auth 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   res.send("TO DO return budget")
 });
 
 // Create new Budget
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   /* 
   Dev notes to be deleted
   POST JSON looks like 
@@ -36,12 +37,12 @@ router.post('/', async (req, res) => {
 });
 
 // GET Budget by Id -- should return individual budgets by id
-router.get('/:id', async (req, res) => {
+router.get('/:id',  withAuth, async (req, res) => {
   res.send("TO DO return budget by ID")
 });
 
 // Update by ID
-router.put('/:id', async (req, res, next) => {
+router.put('/:id',  withAuth, async (req, res, next) => {
   // update a category by its `id` value
   await Budget.update({
     // TO DO
@@ -53,13 +54,20 @@ router.put('/:id', async (req, res, next) => {
 });
 
 // DELETE by id
-router.delete('/:id', async (req, res) => {
-  // Delete a budget by its `id` value
+router.delete('/:id', withAuth, async (req, res) => {
+  // Delete a salary by its `id` value
   await Budget.destroy({
     where: {
-      id: req.params.id
+      id: req.params.id, user_id: req.session.user_id
     }
-  }).then(success => res.json({deleted: true}))
+  }).then(success => {
+    console.log(success)
+    if(success === 1){
+    res.json({deleted: true})
+  } else {
+    res.json({deleted: false})
+  }
+  })
   .catch(console.error("Delete failed"))
 });
 
