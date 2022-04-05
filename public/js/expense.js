@@ -1,3 +1,5 @@
-function expense() {
-    document.getElementById('expense').innerHTML = "expense";
+async function expenses() {
+    const expenseCategory = document.getElementById('expenses').value
+    const expenseValue = document.getElementById('dollabills').textContent
 }
+
