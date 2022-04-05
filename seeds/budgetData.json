@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Billy's Budget",
+        "housing": 1000,
+        "insurance": 100,
+        "transportation": 300,
+        "food": 500,
+        "savings": 100,
+        "utilities": 100,
+        "personal": 100,
+        "user_id": 1
+    },
+    {
+        "name": "Bobby's Budget",
+        "housing": 800,
+        "insurance": 100,
+        "transportation": 200,
+        "food": 400,
+        "savings": 300,
+        "utilities": 75,
+        "personal": 75,
+        "user_id": 2
+    },
+    {
+        "name": "Jerry's Budget",
+        "housing": 1200,
+        "insurance": 200,
+        "transportation": 200,
+        "food": 600,
+        "savings": 200,
+        "utilities": 50,
+        "personal": 300,
+        "user_id": 3
+    },
+    {
+        "name": "Tina's Budget",
+        "housing": 1200,
+        "insurance": 300,
+        "transportation": 250,
+        "food": 450,
+        "savings": 250,
+        "utilities": 75,
+        "personal": 85,
+        "user_id": 4
+    },
+    {
+        "name": "Jolene's Budget",
+        "housing": 1250,
+        "insurance": 250,
+        "transportation": 250,
+        "food": 550,
+        "savings": 150,
+        "utilities": 200,
+        "personal": 200,
+        "user_id": 5
+    }
+]

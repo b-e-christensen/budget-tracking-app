@@ -1,0 +1,87 @@
+[
+    {
+        "name": "First of the month",
+        "housing": 1000,
+        "transportation": 300,
+        "insurance": 100,
+        "user_id": 1
+    },
+    {
+        "name": "First of the month",
+        "housing": 800,
+        "transportation": 200,
+        "insurance": 100,
+        "user_id": 2
+    },
+    {
+        "name": "First of the month",
+        "housing": 1200,
+        "transportation": 200,
+        "insurance": 200,
+        "user_id": 3
+    },
+    {
+        "name": "First of the month",
+        "housing": 1200,
+        "transportation": 250,
+        "insurance": 300,
+        "user_id": 4
+    },
+    {
+        "name": "First of the month",
+        "housing": 1250,
+        "transportation": 250,
+        "insurance": 250,
+        "user_id": 5
+    },
+    {
+        "name": "Grocery Shopping",
+        "food": 150,
+        "user_id": 1
+    },
+    {
+        "name": "Grocery Shopping",
+        "food": 150,
+        "user_id": 2
+    },
+    {
+        "name": "Grocery Shopping",
+        "food": 150,
+        "user_id": 3
+    },
+    {
+        "name": "Grocery Shopping",
+        "food": 150,
+        "user_id": 4
+    },
+    {
+        "name": "Grocery Shopping",
+        "food": 150,
+        "user_id": 5
+    },
+    {
+        "name": "Fun Times at the zoo",
+        "personal": 50,
+        "user_id": 1
+    },
+    {
+        "name": "Blast off at Dave n Busters",
+        "personal": 75,
+        "user_id": 2
+    },
+    {
+        "name": "Shopping Spree at Mall of America",
+        "personal": 1000,
+        "user_id": 3
+    },
+    {
+        "name": "Pizza Time at Sully's",
+        "personal": 50,
+        "user_id": 4
+    },
+    {
+        "name": "Comic Books galore at Mutiny",
+        "personal": 300,
+        "user_id": 5
+    }
+]
