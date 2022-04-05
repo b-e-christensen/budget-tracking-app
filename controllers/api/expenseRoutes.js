@@ -1,18 +1,22 @@
 const router = require('express').Router();
 const {Expense} = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET all expenses -- should return all of the user's budget - only that users Auth 
-router.get('/', async (req, res) => {
-  res.send("TO DO return budget")
+router.get('/', withAuth, async (req, res) => {
+  const userId = req.session.user_id
+  const income = await Expense.findAll({ where: {user_id: userId}
+  }).then(result => res.json(result))
 });
 
 // Create new Budget
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   const approvedCategories = ["housing", "insurance", "transportation", "food", "savings", "utilities", "personal"]
 
   const expenseName = req.body.expense_name;
   const expenseAmount = Number(req.body.expense_amount);
-  const category = req.body.category;
+  const categoryReq = req.body.category;
+  const category = categoryReq.toLowerCase();
   // const vendor = req.body.vendor;
   // const date = req.body.date;
   // Error check for expense name 
@@ -34,43 +38,73 @@ router.post('/', async (req, res) => {
     res.json({error: "Must use a category"})
     return
   }
-  await Expense.create({name: expenseName, category: expenseAmount, user_id: req.session.user_id}).then(success => {
-    if(success === 1){
+  await Expense.create({name: expenseName, [category]: expenseAmount, user_id: req.session.user_id}).then(success => {
+    if(success){
       res.json({created: true})
     } else {
       res.json({error: "An error occurred inserting expense"})
     }
   })
-
-
 });
 
 // GET expense by Id 
-router.get('/:id', async (req, res) => {
-  res.send("TO DO return expense by ID")
+router.get('/:id', withAuth, async (req, res) => {
+  await Expense.findAll({ where: { id: req.params.id, user_id: req.session.user_id }
+  }).then(result => res.json(result))
 });
 
 // Update by ID
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', withAuth, async (req, res) => {
   // update a category by its `id` value
+  const expenseName = req.body.expense_name;
+  const expenseAmount = Number(req.body.expense_amount);
+  const categoryReq = req.body.category;
+  const category = categoryReq.toLowerCase();
+
+  if (!expenseName) {
+    res.json({error: "Must provide a expense name"})
+    return
+  }
+  // Error check expense amount
+  if (!expenseAmount && typeof expenseAmount !== 'number') {
+    res.json({error: "Must enter a expense amount"})
+    return
+  }
+
+  if(!category || !(approvedCategories.indexOf(category) > -1)) {
+    res.json({error: "Must use a category"})
+    return
+  }
+
   await Expense.update({
-    // TO DO
+    name: expenseName, [category]: expenseAmount
   },
     {
-      where: { id: req.params.id }
-      // TO DO MORE HERE
-    }).then(result => res.json({ success: true})
-    ).catch(next)
+      where: { id: req.params.id, user_id: req.session.user_id }
+    }).then(result => { if (result[0] === 1) {
+      res.json({ success: true, salary: req.body.salary })
+    } else {
+      res.json({ success: false})
+    }
+  }
+    ).catch(err => {console.log(err)})
 });
 
 // DELETE by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   // Delete a expense by its `id` value
-  await Budget.destroy({
+  await Expense.destroy({
     where: {
-      id: req.params.id
+      id: req.params.id, user_id: req.session.user_id
     }
-  }).then(success => res.json({deleted: true}))
+  }).then(success => {
+    console.log(success)
+    if(success === 1){
+    res.json({deleted: true})
+  } else {
+    res.json({deleted: false})
+  }
+  })
   .catch(console.error("Delete failed"))
 });
 
