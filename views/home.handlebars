@@ -1,8 +1,29 @@
+<div class="col-12 flex-column align-center justify-center flex-no-wrap" id="home-div">
 
-// displays a pie chart made of data from user's budget
-// Grabs the CANVAS (must be displayed to a canvas html element) and establishes it as the place to hold the chart
-const ctx = document.getElementById('myChart')
-const myChart = new Chart(ctx, {
+<div class="display-flex justify-center" id="welcome-div"><h4>Welcome to your budget app, {{user.username}}!</h4></div>
+
+{{#if user.saving_goals}}
+<div><p>Here are your saving goals!!</p></div>
+{{/if}}
+
+<div class="col-6 chart" id="pie-chart-div">
+    <p>Budget Breakdown:</p>
+     <canvas id="pie-chart" width="200" height="200"></canvas>
+</div>
+
+<div class="col-6 chart" id="double-chart-div">
+    <p>Expenses:</p>
+     <canvas id="double-chart" width="300" height="300"></canvas>
+</div>
+
+
+</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js'></script> 
+{{!-- <script src="/js/chart.js"></script> --}}
+<script>
+const ctx = document.getElementById('pie-chart')
+const pieChart = new Chart(ctx, {
     type: 'pie',
     data: {
         labels: [
@@ -17,7 +38,7 @@ const myChart = new Chart(ctx, {
         datasets: [{
             label: 'Budget Breakdown',
             // will need to change data variables once it is more clear how this data will be returned
-            data: [budget.housing, budget.insurance, budget.transportation, budget.food, budget.savings, budget.utilities, budget.personal],
+            data: [{{user.budget.housing}}, {{user.budget.insurance}}, {{user.budget.transportation}}, {{user.budget.food}}, {{user.budget.savings}}, {{user.budget.utilities}}, {{user.budget.personal}}],
            backgroundColor: [
             'rgba(236, 112, 99, 0.35)',
             'rgba(165, 105, 189, 0.35)',
@@ -45,8 +66,8 @@ const myChart = new Chart(ctx, {
 });
 
 // displays bar chart which contains budget info, and line chart overlayed showing expenses made. 
-const ctxOverlay = document.getElementById('myChart');
-const mixedChart = new Chart(ctxOverlay, {
+const ctxOverlay = document.getElementById('double-chart');
+const doubleChart = new Chart(ctxOverlay, {
     data: {
         labels: [
           'Housing',
@@ -61,7 +82,7 @@ const mixedChart = new Chart(ctxOverlay, {
           type: 'bar',
           label: 'Budget',
           // will need to change data variables once it is more clear how this data will be returned
-          data: [budget.housing, budget.insurance, budget.transportation, budget.food, budget.savings, budget.utilities, budget.personal],
+          data: [{{user.budget.housing}}, {{user.budget.insurance}}, {{user.budget.transportation}}, {{user.budget.food}}, {{user.budget.savings}}, {{user.budget.utilities}}, {{user.budget.personal}}],
           backgroundColor: [
             'rgba(236, 112, 99, 0.35)',
             'rgba(165, 105, 189, 0.35)',
@@ -85,7 +106,7 @@ const mixedChart = new Chart(ctxOverlay, {
           type: 'line',
           label: 'Expenses',
           // will need to change data variables once it is more clear how this data will be returned
-          data: [expense.housing, expense.insurance, expense.transportation, expense.food, expense.savings, expense.utilities, expense.personal],
+          data: [{{user.expense.housing}}, {{user.expense.insurance}}, {{user.expense.transportation}}, {{user.expense.food}}, {{user.expense.savings}}, {{user.expense.utilities}}, {{user.expense.personal}}],
           fill: true,
           borderColor: 'rgb(54, 162, 235)'
         }]
@@ -94,6 +115,4 @@ const mixedChart = new Chart(ctxOverlay, {
           responsive: true
       }
 });
-
-// script src for chart.js (npm docs arent clear at all on how to pull in the package with a require statement)
-/* <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js'></script> */
+</script>

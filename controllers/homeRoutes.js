@@ -1,10 +1,37 @@
 const router = require('express').Router();
-// const { User } = require('../models');
+const { User, Budget, Expense } = require('../models');
 const withAuth = require('../utils/auth');
 
+//CHANGE THIS GET ROUTE ONCE DONE WITH PRODUCTION
 router.get('/', async (req, res) => {
-    res.render('budget', {
-      });
+    try {
+        let userData = await User.findByPk(1, {
+            include: [ { model: Budget }, { model: Expense } ]
+        }
+            // {
+            // where: { id: req.session.user_id } }
+            )
+        const user = userData.get({ plain: true });
+        res.render('home', {
+            user
+        });
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+// GET ROUTE FOR PRODUCTION PURPOSES ONLY (easy way to see the breakdown of the data on users being passed)
+router.get('/user/:id', async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.params.id, {
+            include: [ { model: Budget }, { model: Expense } ]
+        })
+
+        res.status(200).json(userData)
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
 })
 
 router.get('/login', (req, res) => {
