@@ -16,6 +16,7 @@ router.post('/', withAuth, async (req, res) => {
   const expenseName = req.body.expense_name;
   const expenseAmount = Number(req.body.expense_amount);
   const categoryReq = req.body.category;
+  const expenseDate = req.body.date;
   const category = categoryReq.toLowerCase();
   // const vendor = req.body.vendor;
   // const date = req.body.date;
@@ -30,15 +31,15 @@ router.post('/', withAuth, async (req, res) => {
     return
   }
   // Error check for target date  TO DO - once we see date format better error checking 
-  // if (!targetDate) {
-  //   res.send("Error: Must provide a date")
-  //   return
-  // }
+   if (!expenseDate) {
+     res.json({error: "Must provide a date"})
+     return
+  }
   if(!category || !(approvedCategories.indexOf(category) > -1)) {
     res.json({error: "Must use a category"})
     return
   }
-  await Expense.create({name: expenseName, [category]: expenseAmount, user_id: req.session.user_id}).then(success => {
+  await Expense.create({name: expenseName, [category]: expenseAmount, expenseDate: expenseDate, user_id: req.session.user_id}).then(success => {
     if(success){
       res.json({created: true})
     } else {
@@ -59,6 +60,7 @@ router.put('/:id', withAuth, async (req, res) => {
   const expenseName = req.body.expense_name;
   const expenseAmount = Number(req.body.expense_amount);
   const categoryReq = req.body.category;
+  const expenseDate = req.body.date;
   const category = categoryReq.toLowerCase();
 
   if (!expenseName) {
@@ -70,14 +72,17 @@ router.put('/:id', withAuth, async (req, res) => {
     res.json({error: "Must enter a expense amount"})
     return
   }
-
+  if (!expenseDate) {
+    res.json({error: "Must provide a date"})
+    return
+ }
   if(!category || !(approvedCategories.indexOf(category) > -1)) {
     res.json({error: "Must use a category"})
     return
   }
 
   await Expense.update({
-    name: expenseName, [category]: expenseAmount
+    name: expenseName, [category]: expenseAmount, expenseDate: expenseDate
   },
     {
       where: { id: req.params.id, user_id: req.session.user_id }
