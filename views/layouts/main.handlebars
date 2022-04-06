@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <nav>
+        <div>
+
 <!-- Hamburglar      -->
   <label>
     <input type="checkbox">
@@ -25,11 +28,12 @@
 <!-- (more options once on budget page to edit and manipulate budget) --> 
           <li> <a href="#">See Budget</a> </li>
           <li id="nav-bar"> <a href="#">Saving Goals</a> </li>
-<!-- (could pull in a simple marketplace kinda thing of budgeting/finance articles -- call it Budget Help or something) -->
+<!-- (could pull in a simple marketplace kinda thing of budgeting/finance articles - call it Budget Help or something) -->
           <li> <a href="#">News</a> </li>
         </ul>
         </label>
 <!-- end Hamburglar -->
+                <ul>
                    {{#if loggedIn}}
                     <li class="nav-item p-1 mx-4">
                         <a class="nav-link" href="/logout">Logout</a>
@@ -39,7 +43,6 @@
                         <a class="nav-link" href="/login">Login</a>
                     </li>
                     {{/if}}
-
                 </ul>
             </div>
         </nav>

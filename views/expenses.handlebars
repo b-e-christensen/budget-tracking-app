@@ -3,16 +3,17 @@
 
     <h2>MONTHLY EXPENSES</h2>
 
-    <form class="form Monthly Expenses">
+    <form class="MonthlyExpenses" id="submitexpense">
         <div class="form-group">
             <label for="MONTHLY EXPENSES"></label>
             {{!-- <input class="form-input" type="text" id="monthly-expenses"> --}}
         </div>
-    </form>
 
+ <label for="nameofexpense">Name of expense:</label>
+  <input type="text" id="nameofexpense" name="nameofexpense"><br><br>
     
-<label for="bills">Choose an expense:</label>
-<select id="expenses">
+<label for="expensecategory">Choose a category:</label>
+<select id="expensecategory">
   <option value="housing">Housing</option>
   <option value="insurance">Insurance</option>
   <option value="transportation">Transportation</option>
@@ -21,13 +22,16 @@
   <option value="utilities">Utilities</option>
   <option value="personal">Personal</option>
 </select>
-<form action="/action_page.php">
-  <label for="amount">Cost of Expense:</label>
-  <input type="text" id="fname" name="fname"><br><br>
+  <label for="amount">Cost of expense:</label>
+  <input type="text" id="costofexpense" name="costofexpense"><br><br>
   <input type="submit" value="Submit">
+
+<input type="date" id="date">
 </form>
 
-<button type="button">Adding more Expenses? Click Here!</button>
+
+
+<button type="button">Adding more expenses? Click Here!</button>
 
 <script src="/js/expense.js"></script>
 
