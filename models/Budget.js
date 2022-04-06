@@ -46,7 +46,10 @@ Budget.init(
     personal: {
         type: DataTypes.INTEGER,
         allowNull: true
-    },
+    },  
+    budgetDate: {
+        type: DataTypes.DATE,
+      },
     user_id: {
         type: DataTypes.INTEGER,
         references: {

@@ -33,7 +33,7 @@ router.post('/', withAuth, async (req, res) => {
   //   res.send("Error: Must provide a target date")
   //   return
   // }
-  await Budget.create({ name: budgetName, housing: req.body.housing, insurance: req.body.insurance, transportation: req.body.transportation, food: req.body.food, saving: req.body.savings, utilities: req.body.utilities, personal: req.body.personal, user_id: req.session.user_id }).then(success => {
+  await Budget.create({ name: budgetName, housing: req.body.housing, insurance: req.body.insurance, transportation: req.body.transportation, food: req.body.food, saving: req.body.savings, utilities: req.body.utilities, personal: req.body.personal, budgetDate: req.body.date, user_id: req.session.user_id }).then(success => {
     if (success) {
       res.json({ created: true })
     } else {
@@ -70,7 +70,7 @@ router.put('/:id', withAuth, async (req, res, next) => {
   }
   // update a category by its `id` value
   await Budget.update({
-    name: budgetName, housing: req.body.housing, insurance: req.body.insurance, transportation: req.body.transportation, food: req.body.food, saving: req.body.savings, utilities: req.body.utilities, personal: req.body.personal
+    name: budgetName, housing: req.body.housing, insurance: req.body.insurance, transportation: req.body.transportation, food: req.body.food, saving: req.body.savings, utilities: req.body.utilities, personal: req.body.personal, budgetDate: req.body.date
   },
     {
       where: { id: req.params.id, user_id: req.session.user_id }
