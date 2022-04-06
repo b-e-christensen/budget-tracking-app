@@ -1,1 +1,15 @@
 /* text to be able to push to github */
+#home-div {
+    margin: 15px;
+}
+
+.chart {
+    text-align: center;
+    height: 400px;
+    width: 400px;
+}
+
+#welcome-div {
+    margin: 25px;
+    height: fit-content;
+}
