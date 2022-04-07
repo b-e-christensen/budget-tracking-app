@@ -18,7 +18,17 @@ body {
 	background-color: #dcdcdc;
 }
 
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
 
+body::-webkit-scrollbar-track {
+  background: #601608;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #4a4948;
+}
 
 /* Hamburgaler start*/
 .navbar li a:hover, .navbar .current a {
@@ -125,6 +135,9 @@ label a {
 
 /* Classes */
 
+.nav-item {
+  list-style: none;
+}
 
 .header {
 	font-size: 20pt;
