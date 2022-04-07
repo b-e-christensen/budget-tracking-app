@@ -27,13 +27,14 @@ router.post('/', withAuth, async (req, res) => {
   }
   if (!req.body.housing || !req.body.insurance || !req.body.transportation || !req.body.food || !req.body.savings || !req.body.utilities || !req.body.personal) {
     res.json({ error: "Must provide a value for all categories" })
+    return
   }
   // Error check for target date  TO DO - once we see date format better error checking 
   // if (!targetDate) {
   //   res.send("Error: Must provide a target date")
   //   return
   // }
-  await Budget.create({ name: budgetName, housing: req.body.housing, insurance: req.body.insurance, transportation: req.body.transportation, food: req.body.food, saving: req.body.savings, utilities: req.body.utilities, personal: req.body.personal, budgetDate: req.body.date, user_id: req.session.user_id }).then(success => {
+  await Budget.create({ name: budgetName, housing: req.body.housing, insurance: req.body.insurance, transportation: req.body.transportation, food: req.body.food, savings: req.body.savings, utilities: req.body.utilities, personal: req.body.personal, budgetDate: req.body.date, user_id: req.session.user_id }).then(success => {
     if (success) {
       res.json({ created: true })
     } else {
@@ -70,7 +71,7 @@ router.put('/:id', withAuth, async (req, res, next) => {
   }
   // update a category by its `id` value
   await Budget.update({
-    name: budgetName, housing: req.body.housing, insurance: req.body.insurance, transportation: req.body.transportation, food: req.body.food, saving: req.body.savings, utilities: req.body.utilities, personal: req.body.personal, budgetDate: req.body.date
+    name: budgetName, housing: req.body.housing, insurance: req.body.insurance, transportation: req.body.transportation, food: req.body.food, savings: req.body.savings, utilities: req.body.utilities, personal: req.body.personal, budgetDate: req.body.date
   },
     {
       where: { id: req.params.id, user_id: req.session.user_id }

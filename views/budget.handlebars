@@ -1,30 +1,41 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>MONTHLY INCOME</h2>
+<h3>Your budget</h3>
 
-    <form class="form Budget">
-      <div class="form-group">
-        <label for="MONTHLY INCOME">
-        <input class="form-input" type="text" id="enter-income" />
-      </div>
-    </form>
+<section id="budget-section">
+    <div>
+        <label for="name">Budget Name</label>
+        <input class="budget-input" id="name" type="text" readonly>
+    </div>
+    <div>
+        <label for="housing">Housing</label>
+        <input class="budget-input" id="housing" type="text" readonly>
+    </div>
+    <div>
+        <label for="insurance">Insurance</label>
+        <input class="budget-input" id="insurance" type="text" readonly>
+    </div>
+    <div>
+        <label for="transportation">Transportation</label>
+        <input class="budget-input" id="transportation" type="text" readonly>
+    </div>
+    <div>
+        <label for="food">Food</label>
+        <input class="budget-input" id="food" type="text" readonly>
+    </div>
+    <div>
+        <label for="savings">Savings</label>
+        <input class="budget-input" id="savings" type="text" readonly>
+    </div>
+    <div>
+        <label for="utilities">Utilities</label>
+        <input class="budget-input" id="utilities" type="text" readonly>
+    </div>
+    <div>
+        <label for="personal">Personal</label>
+        <input class="budget-input" id="personal" type="text" readonly>
+    </div>
+    <button id="budget-edit-btn">Edit</button>
+    <button id="budget-save-btn" class="hidden">Save</button>
+</section>
 
-    {{!-- <h2>MONTHLY EXPENSES</h2> --}}
 
-    {{!-- <form class="form Monthly Expenses">
-        <div class="form-group">
-            <label for="MONTHLY EXPENSES"></label>
-            <input class="form-input" type="text" id="monthly-expenses">
-        </div>
-    </form> --}}
-
-      {{!-- <h2>MONTHLY EXPENDABLE INCOME</h2>
-
-    <form class="form Expendable Income">
-        <div class="form-group">
-            <label for="MONTHLY EXPENDABLE INCOME"></label>
-            <input class="form-input" type="text" id="exp-income">
-        </div>
-    </form> --}}
-
-    <script src="./js/login.js"></script>
+<script src="/js/budget.js"></script>
