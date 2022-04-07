@@ -13,7 +13,8 @@ router.get('/', async (req, res) => {
             )
         const user = userData.get({ plain: true });
         res.render('home', {
-            user
+            user, logged_in: req.session.logged_in
+          
         });
     } catch (err) {
         res.status(500).json(err)
@@ -21,9 +22,10 @@ router.get('/', async (req, res) => {
 })
 
 // GET ROUTE FOR PRODUCTION PURPOSES ONLY (easy way to see the breakdown of the data on users being passed)
-router.get('/user/:id', async (req, res) => {
+router.get('/user/:id', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.params.id, {
+            where: { user_id: req.session.user_id },
             include: [ { model: Budget }, { model: Expense } ]
         })
 
