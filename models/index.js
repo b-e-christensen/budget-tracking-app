@@ -13,7 +13,6 @@ Income.belongsTo(User, {
     foreignKey: 'user_id'
 })
 
-// changed to has one to eliminate array in data sent to handlebars. Might be an issue at some point
 User.hasOne(Budget, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE' 
@@ -23,7 +22,7 @@ Budget.belongsTo(User, {
     foreignKey: 'user_id'
 })
 
-User.hasOne(Expense, {
+User.hasMany(Expense, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE' 
 })

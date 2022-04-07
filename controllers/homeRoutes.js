@@ -2,16 +2,15 @@ const router = require('express').Router();
 const { User, Budget, Expense } = require('../models');
 const withAuth = require('../utils/auth');
 
-//CHANGE THIS GET ROUTE ONCE DONE WITH PRODUCTION
+
 router.get('/', async (req, res) => {
     try {
-        let userData = await User.findByPk(1, {
+        let userData = await User.findByPk(req.session.user_id, {
+            
             include: [ { model: Budget }, { model: Expense } ]
-        }
-            // {
-            // where: { id: req.session.user_id } }
-            )
+        })   
         const user = userData.get({ plain: true });
+
         res.render('home', {
             user
         });
