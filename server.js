@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
+const helmet = require("helmet");
 const hbs = exphbs.create({});
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -9,6 +10,8 @@ const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 require('dotenv').config();
+
+app.use(helmet.frameguard());
 
 const sess = {
   secret: process.env.SESS_SECRET,
