@@ -1,16 +1,32 @@
+// const { contentSecurityPolicy } = require("helmet");
+
 const submitExpense = async(event) => {
     event.preventDefault();
 
-    const nameOfExpense = document.getElementById('nameofexpense').value
-    const expenseCategory = document.getElementById('expensecategory').value
-    const expenseValue = document.getElementById('costofexpense').value
-    const expenseDate = document.getElementById('date').value
-
-    fetch('/api/expense', {
+    const nameOfExpense = document.getElementById('nameofexpense');
+    const expenseCategory = document.getElementById('expensecategory');
+    const expenseValue = document.getElementById('costofexpense');
+    const expenseDate = document.getElementById('date');
+    const userStatus = document.getElementById('status');
+    // console.log(userStatus.textContent);
+    await fetch('/api/expense', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({expense_name: nameOfExpense, category: expenseCategory, expense_amount: expenseValue, expense_date: expenseDate})
-    })
+        credentials: 'include',
+        body: JSON.stringify({expense_name: nameOfExpense.value, category: expenseCategory.value, expense_amount: expenseValue.value, date: expenseDate.value})
+    });
+
+    userStatus.textContent = `${nameOfExpense.value} has been submitted successfully!`;
+    nameOfExpense.value = "";
+    expenseCategory.value = "";
+    expenseValue.value = "";
+    expenseDate.value = "";
+    
 };
 
+
+
+
+
 document.getElementById("submitexpense").addEventListener("submit", submitExpense);
+// document.getElementById("addexpense").addEventListener("submit", addExpense);
