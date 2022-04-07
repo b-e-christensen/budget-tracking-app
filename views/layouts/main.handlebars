@@ -34,9 +34,9 @@
         </label>
 <!-- end Hamburglar -->
                 <ul>
-                   {{#if loggedIn}}
+                   {{#if logged_in}}
                     <li class="nav-item p-1 mx-4">
-                        <a class="nav-link" href="/logout">Logout</a>
+                        <button id="logout" class="nav-link">Logout</button>
                     </li>
                     {{else}}
                     <li class="nav-item p-1 mx-4">
@@ -58,7 +58,7 @@
     <footer>
 
     </footer>
-
+  <script src="/js/logout.js"></script>
 
 </body>
 
