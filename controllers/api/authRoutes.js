@@ -74,8 +74,17 @@ router.post('/register', async (req, res) => {
         return
     }
     // SQL insert 
-    await User.create({ username: userName, email: userEmail, password: password }).then(response => res.json({success: true, user_created: userName})).catch(err => res.json({error: true, message: err.message}));
+    try {
+    const userData = await User.create({ username: userName, email: userEmail, password: password })
 
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.json({ success: true, user_created: userName });
+    })
+    } catch (err) {
+      res.status(500).json(err)
+    }
 });
 
 module.exports = router;
