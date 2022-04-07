@@ -11,7 +11,7 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="/css/jass.css">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/style.css">
+    {{!-- <link rel="stylesheet" href="/css/style.css"> --}}
 </head>
 
 <body>
@@ -23,15 +23,16 @@
     <input type="checkbox">
       <div class="menu"> <div class="hamburger"></div> </div>
         <ul class="navbar">
-          <li class="current"> <a href="#">Home</a> </li>
-          <li id="nav-bar"> <a href="#">Calendar</a> </li>
+          <li class="current"> <a href="/">Home</a> </li>
+          <li id="nav-bar"> <a href="/calendar">Calendar</a> </li>
 <!-- (more options once on budget page to edit and manipulate budget) --> 
-          <li> <a href="#">See Budget</a> </li>
-          <li id="nav-bar"> <a href="#">Saving Goals</a> </li>
+          <li> <a href="/budget">See Budget</a> </li>
+          <li id="nav-bar"> <a href="/expenses">Enter Expenses</a></li>
+          {{!-- <li id="nav-bar"> <a href="#">Saving Goals</a> </li> --}}
 <!-- (could pull in a simple marketplace kinda thing of budgeting/finance articles - call it Budget Help or something) -->
           <li> <a href="#">News</a> </li>
         </ul>
-        </label>
+    </label>
 <!-- end Hamburglar -->
                 <ul>
                    {{#if logged_in}}

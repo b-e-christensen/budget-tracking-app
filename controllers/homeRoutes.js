@@ -3,7 +3,7 @@ const { User, Budget, Expense } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         let userData = await User.findByPk(req.session.user_id, {
             
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 })
 
 // GET ROUTE FOR PRODUCTION PURPOSES ONLY (easy way to see the breakdown of the data on users being passed)
-router.get('/user/:id', withAuth, async (req, res) => {
+router.get('/user/:id', async (req, res) => {
     try {
         const userData = await User.findByPk(req.params.id, {
             where: { user_id: req.session.user_id },
@@ -40,13 +40,21 @@ router.get('/login', (req, res) => {
         res.redirect('/');
         return;
     }
-
     res.render('login');
 })
 
 router.get('/expenses', (req, res) => {
     res.render('expenses');
 })
+
+router.get('/budget', (req, res) => {
+    res.render('budget');
+})
+
+router.get('/calendar', (req, res) => {
+    res.render('calendar');
+})
+
 
 
 
