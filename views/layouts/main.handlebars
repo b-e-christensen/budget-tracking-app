@@ -15,6 +15,7 @@
 </head>
 
 <body>
+<header class="header">
     <nav>
         <div>
 <!-- Hamburglar      -->
@@ -33,6 +34,8 @@
         </ul>
     </label>
 <!-- end Hamburglar -->
+<p class="title">{{title.title}}</p>
+<p class="user"> {{user.username}} </p>
                 <ul>
                    {{#if logged_in}}
                     <li class="nav-item p-1 mx-4">
@@ -46,20 +49,21 @@
                 </ul>
             </div>
         </nav>
-
+<span></span>
     </header>
-
+<main>
+<div class="hero"></div>
 
     {{{ body }}}
 
     
 
-
+</main>
     <footer>
 
     </footer>
   <script src="/js/logout.js"></script>
-
+<script src="/js/main.js"></script>
 </body>
 
 

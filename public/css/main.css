@@ -30,6 +30,14 @@ body::-webkit-scrollbar-thumb {
   background: #4a4948;
 }
 
+span{
+  position: relative;
+  
+  left: 85%;
+  font-size: 12pt;
+}
+
+
 /* Hamburgaler start*/
 .navbar li a:hover, .navbar .current a {
   color: #000352;   
@@ -135,19 +143,19 @@ label a {
 
 /* Classes */
 
-.nav-item {
-  list-style: none;
-}
 
 .header {
 	font-size: 20pt;
 	font-weight: bold;
 	color: #000000;
-	padding: 30px;
 	background-color: #818589;
 	border-bottom: 6pt solid #000000;
 }
-  
+
+.header h2 {
+  position: relative;
+  left: 28pt;
+}
 
 .hero {
 	display: flex;
@@ -157,6 +165,7 @@ label a {
 	background-size: cover;
 	background-position: center;
 	margin: 0;
+  margin-bottom: 30pt;
 }
 
 
@@ -181,9 +190,12 @@ label a {
   margin-top: -20pt;
 }
 
-#user {
-  text-align: right;
-  margin-top: -20pt;
+.user {
+  position: relative;
+  top: 60pt;
+  left: 15pt;
+  font-size: 20pt;
+  color: #040404;
 } 
   
 
