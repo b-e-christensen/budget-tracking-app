@@ -22,6 +22,7 @@
 </div>
 <script src=" /js/main.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js'></script> 
+<script src="/js/home.js"></script>
 {{!-- <script src="/js/chart.js"></script> --}}
 <script>
 const ctx = document.getElementById('pie-chart')
@@ -66,8 +67,8 @@ const pieChart = new Chart(ctx, {
       responsive: true
   }
 });
-
-// displays bar chart which contains budget info, and line chart overlayed showing expenses made. 
+async function setExpenseData() {
+let expense = await getExpenses()
 const ctxOverlay = document.getElementById('double-chart');
 const doubleChart = new Chart(ctxOverlay, {
     data: {
@@ -107,8 +108,8 @@ const doubleChart = new Chart(ctxOverlay, {
         }, {
           type: 'line',
           label: 'Expenses',
-          // will need to change data variables once it is more clear how this data will be returned
-          data: [{{user.expense.housing}}, {{user.expense.insurance}}, {{user.expense.transportation}}, {{user.expense.food}}, {{user.expense.savings}}, {{user.expense.utilities}}, {{user.expense.personal}}],
+          // will need to create a function to add up each individual expense
+          data: [expense.housing, expense.insurance, expense.transportation, expense.food, expense.savings, expense.utilities, expense.personal],
           fill: true,
           borderColor: 'rgb(54, 162, 235)'
         }]
@@ -116,7 +117,9 @@ const doubleChart = new Chart(ctxOverlay, {
       options: {
           responsive: true
       }
-});
+}); 
+}
+setExpenseData()
 </script>
 
 <script src=" /js/main.js"></script>
