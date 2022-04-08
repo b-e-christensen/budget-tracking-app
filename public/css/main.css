@@ -39,9 +39,8 @@ body::-webkit-scrollbar-thumb {
   background: #4a4948;
 }
 
-span{
+#span{
   position: relative;
-  
   left: 85%;
   font-size: 12pt;
 }
