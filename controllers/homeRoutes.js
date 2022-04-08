@@ -55,6 +55,10 @@ router.get('/calendar', (req, res) => {
     res.render('calendar');
 })
 
+router.get('/income', (req, res) => {
+    res.render('income')
+})
+
 
 
 

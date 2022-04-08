@@ -1,4 +1,3 @@
-/* text to be able to push to github */
 #home-div {
     margin: 15px;
 }
@@ -26,5 +25,7 @@
     color: #031543;
 }
 
-
+.income-form {
+    margin: 10px;
+}
   
