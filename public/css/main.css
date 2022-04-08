@@ -195,7 +195,7 @@ label a {
   left: 60pt;
   list-style: none;
 } 
-/* 
+
 @media only screen and (max-width: 1250pt) {
 
   label input:checked + .menu {
@@ -374,4 +374,4 @@ label a {
     color: #05103d;
     text-decoration: none; 
   }
-}     */
+}     

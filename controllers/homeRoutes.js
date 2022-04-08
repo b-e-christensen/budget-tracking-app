@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Budget, Expense } = require('../models');
+const { User, Budget, Expense, Income } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -25,7 +25,7 @@ router.get('/user/:id', async (req, res) => {
     try {
         const userData = await User.findByPk(req.params.id, {
             where: { user_id: req.session.user_id },
-            include: [ { model: Budget }, { model: Expense } ]
+            include: [ { model: Budget }, { model: Expense }, { model: Income} ]
         })
 
         res.status(200).json(userData)
@@ -59,7 +59,9 @@ router.get('/income', (req, res) => {
     res.render('income')
 })
 
-
+router.get('/first-budget', (req, res) => {
+    res.render('first-budget')
+})
 
 
 module.exports = router;
