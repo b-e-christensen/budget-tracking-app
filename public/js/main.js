@@ -1,4 +1,4 @@
-const dateTime = document.querySelector("span")
+const dateTime = document.getElementById("span")
 dateTime.textContent = new Date().toLocaleDateString("en-US", {
   day: "numeric",
   month: "long",

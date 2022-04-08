@@ -18,6 +18,15 @@ body {
 	background-color: #dcdcdc;
 }
 
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
 body::-webkit-scrollbar {
   width: 0.5rem;
 }
@@ -30,16 +39,15 @@ body::-webkit-scrollbar-thumb {
   background: #4a4948;
 }
 
-span{
+#span{
   position: relative;
-  
   left: 85%;
   font-size: 12pt;
 }
 
 
-/* Hamburgaler start*/
-.navbar li a:hover, .navbar .current a {
+/* Hamburgaler start*//* Hamburgaler start*/
+.HBnavbar li a:hover, .HBnavbar .current a {
   color: #000352;   
   font-weight: 900;
 }
@@ -119,7 +127,7 @@ label ul {
   z-index: 200;
   position: absolute;
   top: 14%;
-  left: 92%;
+  left: 90%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   opacity: 0;
@@ -135,7 +143,7 @@ label a {
   margin: 8pt;
   font-size: 16pt;
   font-weight: 500;
-  color: #000352;
+  color: #0b0b41;
   text-align: center;
   text-decoration: none; 
 }
@@ -146,6 +154,7 @@ label a {
 
 .header {
 	font-size: 20pt;
+  padding-top: 20pt;
 	font-weight: bold;
 	color: #000000;
 	background-color: #818589;
@@ -153,7 +162,7 @@ label a {
 }
 
 .header h2 {
-  position: relative;
+  position: absolute;
   left: 28pt;
 }
 
@@ -161,7 +170,7 @@ label a {
 	display: flex;
 	width: 100%;
 	height: 30px;
-	background-color: #f4c137;
+	background-color: #85bb65;
 	background-size: cover;
 	background-position: center;
 	margin: 0;
@@ -172,33 +181,21 @@ label a {
  /* IDS  */
 
 
-
-
-/* nav links */
-#nav-bar {
-	border-top: .5pt solid #000;
-	border-bottom: .5pt solid #000;
-}
-#greeting {
-  font-size: 18pt;
-	border-bottom: 1pt solid #000000;
-  padding-bottom: 25pt;
-  margin-top: 25pt;
-}
-
-#greeting h3 {
-  margin-top: -20pt;
-}
-
 .user {
-  position: relative;
-  top: 60pt;
+  position: absolute;
+  top: 45pt;
   left: 15pt;
   font-size: 20pt;
   color: #040404;
 } 
-  
 
+.nav-item {
+  position: absolute;
+  top: 40pt;
+  left: 60pt;
+  list-style: none;
+} 
+/* 
 @media only screen and (max-width: 1250pt) {
 
   label input:checked + .menu {
@@ -377,4 +374,4 @@ label a {
     color: #05103d;
     text-decoration: none; 
   }
-}    
+}     */

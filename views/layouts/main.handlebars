@@ -22,12 +22,12 @@
   <label>
     <input type="checkbox">
       <div class="menu"> <div class="hamburger"></div> </div>
-        <ul class="navbar">
+        <ul class="HBnavbar">
           <li class="current"> <a href="/">Home</a> </li>
-          <li id="nav-bar"> <a href="/calendar">Calendar</a> </li>
+          <li id="HBnav-bar"> <a href="/calendar">Calendar</a> </li>
 <!-- (more options once on budget page to edit and manipulate budget) --> 
           <li> <a href="/budget">See Budget</a> </li>
-          <li id="nav-bar"> <a href="/expenses">Enter Expenses</a></li>
+          <li id="HBnav-bar"> <a href="/expenses">Enter Expenses</a></li>
           {{!-- <li id="nav-bar"> <a href="#">Saving Goals</a> </li> --}}
 <!-- (could pull in a simple marketplace kinda thing of budgeting/finance articles - call it Budget Help or something) -->
           <li> <a href="#">News</a> </li>
@@ -35,7 +35,7 @@
     </label>
 <!-- end Hamburglar -->
 <p class="title">{{title.title}}</p>
-<p class="user"> {{user.username}} </p>
+<p class="user"> -{{user.username}}- </p>
                 <ul>
                    {{#if logged_in}}
                     <li class="nav-item p-1 mx-4">
@@ -49,7 +49,7 @@
                 </ul>
             </div>
         </nav>
-<span></span>
+<span id="span"></span>
     </header>
 <main>
 <div class="hero"></div>

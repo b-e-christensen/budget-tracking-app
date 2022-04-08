@@ -15,12 +15,7 @@
     border-bottom: .5pt solid #000000;
 }
 
-.nav-item {
-    position: relative;
-    top: 10pt;
-    left: 60pt;
-    list-style: none;
-}
+
 
 .nav-link {
     color: #031543;
