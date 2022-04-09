@@ -14,6 +14,8 @@
     border-bottom: .5pt solid #000000;
 }
 
+
+/* login - logout */
 .nav-link {
     color: #031543;
 }
@@ -21,4 +23,72 @@
 .income-form {
     margin: 5px;
 }
+ /* header classes */
+.user {
+    position: absolute;
+    top: 45pt;
+    left: 15pt;
+    font-size: 20pt;
+    color: #040404;
+  } 
   
+  .nav-item {
+    position: absolute;
+    top: 40pt;
+    left: 60pt;
+    list-style: none;
+  } 
+
+  /* budget */
+
+  .budget {
+    padding-bottom: 8pt;
+    padding-left: 110pt;
+}
+  
+  #budget-section{
+      padding-left: 45pt;
+  }
+
+  .budget-input {
+      margin: 4pt;
+      padding: 2pt;
+  }
+
+  #budget-edit-btn {
+      margin: 5pt;
+      padding: 6pt;
+      color: #9e9e9f;
+      background-color: #0a0944;
+      border: .5 solid #000000
+  }
+  #budget-save-btn {
+      margin: 5pt;
+      padding: 6pt;
+      color: #9e9e9f;
+      background-color: #0a0944;
+      border: .5 solid #000000
+  }
+
+  #budBtn {
+      margin-top: 10pt;
+      margin-left: 65pt;
+  }
+
+  /* Expenses */
+#expenses{
+    padding-left: 55pt;
+}
+
+  .MonthlyExpenses {
+      padding-left: 40pt;
+  }
+
+  #expBtn {
+      padding: 5pt;
+      margin-left: 120pt;
+      margin-top: 15pt;
+      color: #9e9e9f;
+      background-color: #0a0944;
+      border: .5 solid #000000
+  }

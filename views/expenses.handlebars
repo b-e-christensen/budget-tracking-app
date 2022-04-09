@@ -1,9 +1,7 @@
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-
 <div class="row">
   <div class="col-md-6">
 
-    <h2>MONTHLY EXPENSES</h2>
+    <h2 id="expenses">MONTHLY EXPENSES</h2>
 
     <form class="MonthlyExpenses" id="submitexpense">
         <div class="form-group">
@@ -26,20 +24,16 @@
 </select>
   <label for="amount">Cost of expense:</label>
   <input type="text" id="costofexpense" name="costofexpense"><br><br>
-  <input type="submit" value="Submit">
+  <input type="date" id="date">
+  <div id="status"></div>
+  <input id="expBtn" type="submit" value="Submit">
   
 
-<input type="date" id="date">
-<div id="status"></div>
+
 </form>
 
 {{!-- <button type="button" id="addexpense">Adding more expenses? Click Here!</button> --}}
 <br>
-
-{{!-- way to get expenses and iterate through them. 
-{{#each expenses as |expense|}}
-{{expense.name}}
-{{/each}} --}}
 
 <main class="container-fluid">
   <div class="container flex justify-center mx-auto">
@@ -51,10 +45,10 @@
                 <table>
                 <thead class="bg-gray-50">
                     <tr>
-                    <th class="px-20 py-1 text-md text-black-5000 row-name" id= "name">Expense Name</th>
-                    <th class="px-20 py-1 text-md text-black-500 row-name" id= "category">Category</th>
-                    <th class="px-10 py-1 text-md text-black-500 row-name" id= "cost">Cost</th>
-                    <th class="px-2 py-1 text-md text-black-500 row-name"id= "date">Date</th>
+                    <th class="px-4 py-1 text-md text-black-5000 row-name" id= "name">Expense Name</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "category">Category</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "cost">Cost</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name"id= "date">Date</th>
                     </tr>
                 </thead>                
                     <tbody id="table-body">
