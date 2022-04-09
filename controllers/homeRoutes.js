@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { redirect } = require('express/lib/response');
 const { User, Budget, Expense, Income } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -6,15 +7,18 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, async (req, res) => {
     try {
         let userData = await User.findByPk(req.session.user_id, {
-            
-            include: [ { model: Budget }, { model: Expense } ]
+            include: [ { model: Budget }, { model: Expense }, { model: Income } ]
         })   
         const user = userData.get({ plain: true });
-
+        if (user.income == null) {
+            res.redirect('/income')
+        } else if (user.budget == null) {
+            res.redirect('/first-budget')
+        } else {
         res.render('home', {
             user, logged_in: req.session.logged_in
-          
         });
+        }
     } catch (err) {
         res.status(500).json(err)
     }
