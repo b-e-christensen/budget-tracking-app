@@ -49,73 +49,32 @@ document.getElementById("submitexpense").addEventListener("submit", submitExpens
 
 //add a new function here that would generate a row under the correct columns to add the info to the webpage when the button is pushed
 
-function getFromLocal () {
-    tableBody = $('#table-body');
-    retrievedName = JSON.parse(localStorage.getItem('name'))
-    retrievedNotes = JSON.parse(localStorage.getItem('category'))
-    retrievedTraining1 = JSON.parse(localStorage.getItem('cost'))
-    retrievedDate1 = JSON.parse(localStorage.getItem('date'))
+$(function () {
+  // Get the text for the Handlebars template from the script element.
+  var templateText = $("#tableTemplate").html();
+  
+  // Compile the Handlebars template.
+  var tableTemplate = Handlebars.compile(templateText);
 
-    if(retrievedName !== null && retrievedName !== '') {
-      
-    let expenseRowEl = $('<tr>');
-    let expenseNameTdEl = $('<td>').addClass('p-2').text(retrievedName);
-    let expenseCategoryTdEl = $('<td>').addClass('p-2').text(retrievedCategory);
-    let expenseCostTdEl = $('<td>').addClass('p-2').text(retrievedCost);
-    let expenseDateTdEl = $('<td>').addClass('p-2').text(retrievedDate);
-   
-    
-  expenseRowEl.append(
-    expenseNameTdEl,
-    expenseCategoryTdEl,
-    expenseCostTdEl,
-    expenseDateTdEl,
-    );
+	// Define an array of people.
+  var people = [
+    { "Id": 1, "First Name": "Anthony", "Last Name": "Nelson", "Age": 25 },
+    { "Id": 2, "First Name": "Helen", "Last Name": "Garcia", "Age": 32 },
+    { "Id": 3, "First Name": "John", "Last Name": "Williams", "Age": 48 }
+  ];
   
-    tableBody.append(expenseRowEl)
-  }
-  }
+  // Evaluate the template with an array of people and set the HTML
+  // for the people table.
+  $("#people").html(tableTemplate({ array: people }));
   
-function setexpenseData(){
-  let nameInput = document.getElementById('exp-name').value;
-  //notes local store
-  let categoryInput = document.getElementById('exp-category').value;
-  //training option 1 local store
-  let costInput = document.getElementById('exp-cost').value;
-  //date local store
-  let dateInput = document.getElementById('exp-date').value;
-
+  // Deine an array of smart phones.
+  var smartPhones = [
+  	{ "Manufacturer": "Apple", "Phone": "iPhone", "Operating System": "iOS" },
+    { "Manufacturer": "Samsung", "Phone": "Galaxy", "Operating System": "Android" },
+    { "Manufacturer": "Nokia", "Phone": "Lumia", "Operating System": "Windows" }
+  ];
   
-    localStorage.setItem('name', JSON.stringify(nameInput));
-    localStorage.setItem('category', JSON.stringify(categoryInput));
-    localStorage.setItem('cost', JSON.stringify(costInput));
-    localStorage.setItem('date', JSON.stringify(dateInput));;
-  }
-//   function printModalInfo () {
-  
-//   //name local store
-//   let nameInput = document.getElementById('exp-name').value;
-//   //category local store
-//   let categoryInput = document.getElementById('exp-category').value;
-//   //cost local store
-//   let costInput = document.getElementById('exp-cost').value;
-//   //date  local store
-//   let dateInput = document.getElementById('emp-date').value;
-  
-//     let expenseRowEl = $('<tr>');
-//     let expenseNameTdEl = $('<td>').addClass('p-2').text(nameInput);
-//     let expenseCategoryTdEl = $('<td>').addClass('p-2').text(noteInput);
-//     let expenseCostTdEl = $('<td>').addClass('p-2').text(trainInput1);
-//     let expenseDateTdEl = $('<td>').addClass('p-2').text(dateInput1);
-
-  
-//   expenseRowEl.append(
-//     expenseNameTdEl,
-//     expenseCategoryTdEl,
-//     expenseCostTdEl,
-//     expenseDateTdEl,
-//     );
-  
-//     tableBody.append(expenseRowEl)
-  
-//   }
+  // Evaluate the same table template with an array of smart phoes and set the HTML
+  // for the smartphones table.
+  $("#smartphones").html(tableTemplate({ array: smartPhones }));
+});

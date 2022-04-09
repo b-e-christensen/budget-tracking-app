@@ -215,26 +215,17 @@ label a {
 
 
 /* table ids */
-#name {
- border-right: 2pt solid #fff;
+table {
+  width: 100%;
 }
 
-#category {
-  border-right: 2pt solid #fff;
+table, th, td {
+  border: 1px solid lightgrey;
+  border-collapse: collapse;
 }
 
-#cost {
-  border-right: 2pt solid #fff;
-}
-
-/* #date {
-  border-right: 2pt solid #fff;
-} */
-
-td {
-  border: 1pt solid black;
-  padding: 10pt;
-  background-color: #ffffff;
+th, td {
+  padding: 2px 4px;
 }
 
 /* 

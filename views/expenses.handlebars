@@ -3,11 +3,11 @@
 
     <h2 id="expenses">MONTHLY EXPENSES</h2>
 
-    <form class="MonthlyExpenses" id="submitexpense">
-        <div class="form-group">
-            <label for="MONTHLY EXPENSES"></label>
+<form class="MonthlyExpenses" id="submitexpense">
+  <div class="form-group">
+    <label for="MONTHLY EXPENSES"></label>
             {{!-- <input class="form-input" type="text" id="monthly-expenses"> --}}
-        </div>
+  </div>
 
  <label for="nameofexpense">Name of expense:</label>
   <input type="text" id="nameofexpense" name="nameofexpense"><br><br>
@@ -32,6 +32,41 @@
 
 {{!-- <button type="button" id="addexpense">Adding more expenses? Click Here!</button> --}}
 <br>
+<br>
+
+<h2>Current Expenses</h2>
+
+<h3>People</h3>
+<div id="people"></div>
+
+
+
+<!-- The script element is used to define the Handlebars template -->
+<script type="text/x-handlebars-template" id="tableTemplate">
+<table>
+<thead>
+  <tr>
+    {{#each expenses as |expense|}}
+     <th>{{expense.cost</th>    
+      <th>{{@key}}</th>
+    {{/each}}
+  </tr>
+</thead>
+<tbody>
+  {{#each array}}
+    <tr>
+    	{{#each this}}
+        <td>{{this}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+</tbody>
+</table>
+</script>
+
+<div style="position: absolute;bottom: 5px;">
+
+</div>
 
 
 
@@ -71,6 +106,9 @@
   </div>
 </main>
 
+{{#each expenses as |expense|}} 
+   {{exspense.cost}}
+{{/each}}
 
 
 
