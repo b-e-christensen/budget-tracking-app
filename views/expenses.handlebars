@@ -27,8 +27,6 @@
   <input type="date" id="date">
   <div id="status"></div>
   <input id="expBtn" type="submit" value="Submit">
-  
-
 
 </form>
 
@@ -70,6 +68,43 @@
 
 </div>
 
+
+
+<main class="container-fluid">
+  <div class="container flex justify-center mx-auto">
+    <section>
+        <div class="flex flex-col">
+        <div class="table-responsive">
+            <div class="w-full">
+            <div class="border-b border-gray-200 shadow">
+              <form id="expenses-by-date">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date">
+
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date">
+
+                <input id="end-date" type="submit" value="Search">
+              </form>
+                <table>
+                <thead class="bg-gray-50">
+                    <tr>
+                    <th class="px-4 py-1 text-md text-black-5000 row-name" id= "name">Expense Name</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "category">Category</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "cost">Cost</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name"id= "date">Date</th>
+                    </tr>
+                </thead>                
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+  </div>
+</main>
 
 {{#each expenses as |expense|}} 
    {{exspense.cost}}

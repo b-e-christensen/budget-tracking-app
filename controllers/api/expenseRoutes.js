@@ -48,6 +48,22 @@ router.post('/', withAuth, async (req, res) => {
   })
 });
 
+router.post('/date', async (req, res) => {
+  try {
+      const expenseData = await Expense.findAll({
+          where: {
+              user_id: req.session.user_id,
+            }
+        })
+        let expensesInRange = []
+
+  } catch (err) {
+      console.log(err)
+      res.status(500).json(err)
+  }
+})
+
+
 // GET expense by Id 
 router.get('/:id', withAuth, async (req, res) => {
   await Expense.findAll({ where: { id: req.params.id, user_id: req.session.user_id }
