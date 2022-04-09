@@ -16,6 +16,12 @@
 
 
 /* login - logout */
+.card-img {
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
+
 .nav-link {
     color: #031543;
 }

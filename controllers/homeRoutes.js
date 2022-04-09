@@ -79,5 +79,9 @@ router.get('/first-budget', (req, res) => {
     res.render('first-budget')
 })
 
+router.get('/news', (req, res) => {
+    res.render('news')
+})
+
 
 module.exports = router;
