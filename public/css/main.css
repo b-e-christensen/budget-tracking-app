@@ -195,6 +195,48 @@ label a {
   left: 60pt;
   list-style: none;
 } 
+
+/* table classes */
+.row-name {
+  background-color: #d8d4d4;
+}
+
+
+.custom-table {
+  text-align: center;
+  width: 75%;
+  margin: auto;
+}
+
+.table-responsive {
+  margin-bottom: 20px;
+  margin-top: 35pt;
+}
+
+
+/* table ids */
+#name {
+ border-right: 2pt solid #fff;
+}
+
+#category {
+  border-right: 2pt solid #fff;
+}
+
+#cost {
+  border-right: 2pt solid #fff;
+}
+
+/* #date {
+  border-right: 2pt solid #fff;
+} */
+
+td {
+  border: 1pt solid black;
+  padding: 10pt;
+  background-color: #ffffff;
+}
+
 /* 
 @media only screen and (max-width: 1250pt) {
 
