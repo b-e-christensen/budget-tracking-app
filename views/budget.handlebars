@@ -1,4 +1,4 @@
-<h3>Your budget</h3>
+<h3 class="budget">Your budget</h3>
 
 <section id="budget-section">
     <div>
@@ -33,9 +33,48 @@
         <label for="personal">Personal</label>
         <input class="budget-input" id="personal" type="text" readonly>
     </div>
-    <button id="budget-edit-btn">Edit</button>
-    <button id="budget-save-btn" class="hidden">Save</button>
+      <div id="budBtn">
+        <button id="budget-edit-btn">Edit</button>
+        <button id="budget-save-btn" class="hidden">Save</button>
+      </div>
 </section>
+
+<br>
+
+ 
+
+<main class="container-fluid">
+  <div class="container flex justify-center mx-auto">
+    <section>
+        <div class="flex flex-col">
+        <div class="table-responsive">
+            <div class="w-full">
+            <div class="border-b border-gray-200 shadow">
+                <table>
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-4 py-1 text-md text-black-500 row-name"id= "date">Date</th>
+                    <th class="px-4 py-1 text-md text-black-5000 row-name" id= "bud-name">Budget Name</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "housing">Housing</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "insurance">Insurance</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "transportation">Transportation</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "food">Food</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "savings">Savings</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "utilities">Utilities</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "personal">Personal</th>
+                  </tr>
+                </thead>                
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+  </div>
+</main>
+
 
 
 <script src="/js/budget.js"></script>
