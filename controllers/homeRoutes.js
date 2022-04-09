@@ -43,7 +43,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 })
 
-router.get('/expenses', async (req, res) => {
+router.get('/expenses', withAuth, async (req, res) => {
     try {
     const expenseData = await Expense.findAll({
         where: {
