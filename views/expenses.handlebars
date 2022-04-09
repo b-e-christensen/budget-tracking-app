@@ -3,11 +3,11 @@
 
     <h2 id="expenses">MONTHLY EXPENSES</h2>
 
-    <form class="MonthlyExpenses" id="submitexpense">
-        <div class="form-group">
-            <label for="MONTHLY EXPENSES"></label>
+<form class="MonthlyExpenses" id="submitexpense">
+  <div class="form-group">
+    <label for="MONTHLY EXPENSES"></label>
             {{!-- <input class="form-input" type="text" id="monthly-expenses"> --}}
-        </div>
+  </div>
 
  <label for="nameofexpense">Name of expense:</label>
   <input type="text" id="nameofexpense" name="nameofexpense"><br><br>
@@ -34,34 +34,46 @@
 
 {{!-- <button type="button" id="addexpense">Adding more expenses? Click Here!</button> --}}
 <br>
+<br>
 
-<main class="container-fluid">
-  <div class="container flex justify-center mx-auto">
-    <section>
-        <div class="flex flex-col">
-        <div class="table-responsive">
-            <div class="w-full">
-            <div class="border-b border-gray-200 shadow">
-                <table>
-                <thead class="bg-gray-50">
-                    <tr>
-                    <th class="px-4 py-1 text-md text-black-5000 row-name" id= "name">Expense Name</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "category">Category</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "cost">Cost</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name"id= "date">Date</th>
-                    </tr>
-                </thead>                
-                    <tbody id="table-body">
-                    </tbody>
-                </table>
-            </div>
-            </div>
-        </div>
-        </div>
-    </section>
-  </div>
-</main>
+<h2>Current Expenses</h2>
 
+<h3>People</h3>
+<div id="people"></div>
+
+
+
+<!-- The script element is used to define the Handlebars template -->
+<script type="text/x-handlebars-template" id="tableTemplate">
+<table>
+<thead>
+  <tr>
+    {{#each expenses as |expense|}}
+     <th>{{expense.cost</th>    
+      <th>{{@key}}</th>
+    {{/each}}
+  </tr>
+</thead>
+<tbody>
+  {{#each array}}
+    <tr>
+    	{{#each this}}
+        <td>{{this}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+</tbody>
+</table>
+</script>
+
+<div style="position: absolute;bottom: 5px;">
+
+</div>
+
+
+{{#each expenses as |expense|}} 
+   {{exspense.cost}}
+{{/each}}
 
 
 
