@@ -5,7 +5,9 @@ const withAuth = require('../../utils/auth');
 // GET all expenses -- should return all of the user's budget - only that users Auth 
 router.get('/', withAuth, async (req, res) => {
   const userId = req.session.user_id
-  const expense = await Expense.findAll({ where: {user_id: userId}
+  const expense = await Expense.findAll({ 
+    where: { user_id: userId }, 
+    order: [ ['expenseDate', 'DESC'] ],
   }).then(result => res.json(result))
 });
 
@@ -48,14 +50,37 @@ router.post('/', withAuth, async (req, res) => {
   })
 });
 
-router.post('/date', async (req, res) => {
+router.get('/date/:startDate/:endDate', async (req, res) => {
   try {
+    
+    const start = req.params.startDate
+    const end = req.params.endDate
       const expenseData = await Expense.findAll({
           where: {
               user_id: req.session.user_id,
-            }
+            },
+            order: [
+              ['expenseDate', 'DESC']
+          ],
         })
+        const startDate = new Date(start)
+        const endDate = new Date(end)
+    
         let expensesInRange = []
+          for (let i = 0; i < expenseData.length; i++) {
+              const element = expenseData[i];
+              const date = element.expenseDate;
+              if (!startDate && !endDate){
+                  expensesInRange.push(element)
+              } else if (startDate && !endDate) {
+                if (date === startDate) {
+                  expensesInRange.push(element)
+                }
+              } else if (date > startDate && date < endDate) {
+                expensesInRange.push(element)
+              }
+            }
+      res.status(200).json(expensesInRange)
 
   } catch (err) {
       console.log(err)

@@ -25,23 +25,6 @@ const submitExpense = async(event) => {
     
 };
 
-async function sendDates() {
-  const start = document.getElementById('start-date').value
-  const end = document.getElementById('end-date').value
-
-  const response = await fetch('/api/expense/date', {
-    method: 'POST',
-    body: JSON.stringify({ start, end }),
-    headers: { 'Content-Type': 'application/json' },
-  })
-  if(response.ok) {
-    console.log('response ok')
-  } else {
-    console.log(response.statusText)
-  }
-}
-
-document.getElementById('expenses-by-date').addEventListener('submit', sendDates)
 document.getElementById("submitexpense").addEventListener("submit", submitExpense);
 // document.getElementById("addexpense").addEventListener("submit", addExpense);
 
