@@ -70,13 +70,7 @@ router.get('/date/:startDate/:endDate', async (req, res) => {
           for (let i = 0; i < expenseData.length; i++) {
               const element = expenseData[i];
               const date = element.expenseDate;
-              if (!startDate && !endDate){
-                  expensesInRange.push(element)
-              } else if (startDate && !endDate) {
-                if (date === startDate) {
-                  expensesInRange.push(element)
-                }
-              } else if (date > startDate && date < endDate) {
+              if (date > startDate && date < endDate) {
                 expensesInRange.push(element)
               }
             }
@@ -97,6 +91,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
 // Update by ID
 router.put('/:id', withAuth, async (req, res) => {
+  const approvedCategories = ["housing", "insurance", "transportation", "food", "savings", "utilities", "personal"]
   // update a category by its `id` value
   const expenseName = req.body.expense_name;
   const expenseAmount = Number(req.body.expense_amount);
@@ -123,7 +118,7 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 
   await Expense.update({
-    name: expenseName, [category]: expenseAmount, expenseDate: expenseDate
+    housing: null, insurance: null, transportation: null, food: null, savings: null, utilities: null, personal: null, name: expenseName, [category]: expenseAmount, expenseDate: expenseDate
   },
     {
       where: { id: req.params.id, user_id: req.session.user_id }
