@@ -48,19 +48,7 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/expenses', withAuth, async (req, res) => {
-    try {
-    const expenseData = await Expense.findAll({
-        where: {
-            user_id: req.session.user_id
-        }
-    })   
-    const expenses = expenseData.map((expense) => expense.get({ plain: true }));
-    res.render('expenses', {
-        expenses
-    });
-    } catch (err) {
-        res.status(500).json(err)
-    }
+    res.render('expenses');
 })
 
 router.get('/budget', (req, res) => {

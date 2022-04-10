@@ -30,45 +30,6 @@
 
 </form>
 
-{{!-- <button type="button" id="addexpense">Adding more expenses? Click Here!</button> --}}
-<br>
-<br>
-
-<h2>Current Expenses</h2>
-
-<h3>People</h3>
-<div id="people"></div>
-
-
-
-<!-- The script element is used to define the Handlebars template -->
-<script type="text/x-handlebars-template" id="tableTemplate">
-<table>
-<thead>
-  <tr>
-    {{#each expenses as |expense|}}
-     <th>{{expense.cost</th>    
-      <th>{{@key}}</th>
-    {{/each}}
-  </tr>
-</thead>
-<tbody>
-  {{#each array}}
-    <tr>
-    	{{#each this}}
-        <td>{{this}}</td>
-      {{/each}}
-    </tr>
-  {{/each}}
-</tbody>
-</table>
-</script>
-
-<div style="position: absolute;bottom: 5px;">
-
-</div>
-
-
 
 <main class="container-fluid">
   <div class="container flex justify-center mx-auto">
@@ -86,15 +47,15 @@
 
                 <input id="end-date" type="submit" value="Search">
               </form>
-                <table>
-                <thead class="bg-gray-50">
+                <table id="expenses-table">
                     <tr>
                     <th class="px-4 py-1 text-md text-black-5000 row-name" id= "name">Expense Name</th>
                     <th class="px-4 py-1 text-md text-black-500 row-name" id= "category">Category</th>
                     <th class="px-4 py-1 text-md text-black-500 row-name" id= "cost">Cost</th>
                     <th class="px-4 py-1 text-md text-black-500 row-name"id= "date">Date</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name"id= "edit">Edit</th>
+                    <th class="px-4 py-1 text-md text-black-500 row-name"id= "delete">Delete</th>
                     </tr>
-                </thead>                
                     <tbody id="table-body">
                     </tbody>
                 </table>
@@ -106,15 +67,6 @@
   </div>
 </main>
 
-{{#each expenses as |expense|}} 
-   {{exspense.cost}}
-{{/each}}
-
-
-
-
-
-
 
 <script src="/js/expense.js"></script>
-
+<script src="/js/getExpenses.js"></script>
