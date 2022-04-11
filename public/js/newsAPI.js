@@ -10,19 +10,23 @@ async function getApi() {
         let parentDiv = document.getElementById('append-to')
 
         let aTag = document.createElement('a')
-        aTag.classList.add('display-flex', 'col-9', 'align-center', 'justify-center')
+        aTag.classList.add('display-flex', 'col-6', 'align-left', 'justify-center', 'text')
         aTag.setAttribute('href', element.url)
         aTag.setAttribute('target', '_blank')
         let outisdeDiv = document.createElement('div')
         outisdeDiv.classList.add('card', 'display-flex', 'justify-center')
         outisdeDiv.setAttribute('width', '100%')
+        
         let img = document.createElement('img')
-        img.classList.add('card-img', 'col-4')
+        img.classList.add('card-news-img')
         img.setAttribute('src', element.urlToImage)
         img.setAttribute('alt', 'Image taken from article\'s website')
+        
         let insideDiv = document.createElement('div')
-        insideDiv.classList.add('col-5', 'display-flex', 'flex-column', 'align-center', 'justify-center')
-        let hTitle = document.createElement('h4')
+        insideDiv.classList.add('col-4', 'display-flex', 'flex-column', 'align-center', 'justify-center')
+        
+        let hTitle = document.createElement('p')
+        hTitle.classList.add('news-text')
         hTitle.textContent = element.title
 
 
