@@ -18,8 +18,12 @@ router.get('/thisMonth', withAuth, async (req, res) => {
   let expensesInRange =[]
   for (let i = 0; i < expense.length; i++) {
     const element = expense[i];
-    let monthOfExpense = element.expenseDate.toString().split(' ')[1];
-    console.log(`month of expense ------>  ${monthOfExpense}`)
+    let dateOfExpense = new Date (element.expenseDate)
+    var day = 60 * 60 * 24 * 1000;
+    var endDate = new Date(dateOfExpense.getTime() + day);
+    let monthOfExpense = endDate.toString().split(' ')[1];
+    console.log(`element dateOfExpense ------>  ${dateOfExpense}`)
+    console.log(`element endDate ------>  ${monthOfExpense}`)
     const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     const d = new Date();
     let currentMonth = month[d.getMonth()];
