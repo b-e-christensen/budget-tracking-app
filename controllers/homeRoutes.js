@@ -50,7 +50,7 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/expenses', withAuth, async (req, res) => {
-    res.render('expenses');
+    res.render('expenses', {logged_in: req.session.logged_in});
 })
 
 router.get('/budget', withAuth, (req, res) => {
@@ -58,19 +58,19 @@ router.get('/budget', withAuth, (req, res) => {
 })
 
 router.get('/calendar', withAuth, (req, res) => {
-    res.render('calendar');
+    res.render('calendar', {logged_in: req.session.logged_in});
 })
 
 router.get('/income', withAuth, (req, res) => {
-    res.render('income')
+    res.render('income', {logged_in: req.session.logged_in})
 })
 
 router.get('/first-budget', withAuth, (req, res) => {
-    res.render('first-budget')
+    res.render('first-budget', {logged_in: req.session.logged_in})
 })
 
 router.get('/news', withAuth, (req, res) => {
-    res.render('news')
+    res.render('news', {logged_in: req.session.logged_in})
 })
 
 
