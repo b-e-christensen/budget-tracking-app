@@ -44,4 +44,4 @@ const postBudget = async (event) => {
 
 }
 
-document.getElementById('post-budget').addEventListener('submit', postBudget)
+document.getElementById('post-budget').addEventListener('click', postBudget)
