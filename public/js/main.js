@@ -1,4 +1,6 @@
-const dateTime = document.getElementById("span")
+if (typeof dateTime == 'undefined') {
+  var dateTime = document.getElementById("span")
+}
 dateTime.textContent = new Date().toLocaleDateString("en-US", {
   day: "numeric",
   month: "long",
@@ -6,3 +8,5 @@ dateTime.textContent = new Date().toLocaleDateString("en-US", {
   hour: "numeric",
   minute: "numeric"
 });
+
+

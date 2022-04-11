@@ -1,3 +1,7 @@
+let inputEls = [...document.querySelectorAll('input')]
+inputEls.pop()
+inputEls.shift()
+
 const postBudget = async (event) => {
     event.preventDefault()
 
@@ -10,6 +14,11 @@ const postBudget = async (event) => {
     const utilities = document.getElementById('utilities').value
     const personal = document.getElementById('personal').value
 
+    const notOver = await checkTotal()
+    if(!notOver) {
+        alert('Total budget value must be under 100%')
+        return
+    }
 
     const response = await fetch('/api/budget', {
         method: 'POST',
