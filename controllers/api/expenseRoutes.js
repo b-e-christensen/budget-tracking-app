@@ -5,7 +5,9 @@ const withAuth = require('../../utils/auth');
 // GET all expenses -- should return all of the user's budget - only that users Auth 
 router.get('/', withAuth, async (req, res) => {
   const userId = req.session.user_id
-  const expense = await Expense.findAll({ where: {user_id: userId}
+  const expense = await Expense.findAll({ 
+    where: { user_id: userId }, 
+    order: [ ['expenseDate', 'DESC'] ],
   }).then(result => res.json(result))
 });
 
@@ -48,6 +50,39 @@ router.post('/', withAuth, async (req, res) => {
   })
 });
 
+router.get('/date/:startDate/:endDate', async (req, res) => {
+  try {
+    
+    const start = req.params.startDate
+    const end = req.params.endDate
+      const expenseData = await Expense.findAll({
+          where: {
+              user_id: req.session.user_id,
+            },
+            order: [
+              ['expenseDate', 'DESC']
+          ],
+        })
+        const startDate = new Date(start)
+        const endDate = new Date(end)
+    
+        let expensesInRange = []
+          for (let i = 0; i < expenseData.length; i++) {
+              const element = expenseData[i];
+              const date = element.expenseDate;
+              if (date > startDate && date < endDate) {
+                expensesInRange.push(element)
+              }
+            }
+      res.status(200).json(expensesInRange)
+
+  } catch (err) {
+      console.log(err)
+      res.status(500).json(err)
+  }
+})
+
+
 // GET expense by Id 
 router.get('/:id', withAuth, async (req, res) => {
   await Expense.findAll({ where: { id: req.params.id, user_id: req.session.user_id }
@@ -56,6 +91,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
 // Update by ID
 router.put('/:id', withAuth, async (req, res) => {
+  const approvedCategories = ["housing", "insurance", "transportation", "food", "savings", "utilities", "personal"]
   // update a category by its `id` value
   const expenseName = req.body.expense_name;
   const expenseAmount = Number(req.body.expense_amount);
@@ -82,7 +118,7 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 
   await Expense.update({
-    name: expenseName, [category]: expenseAmount, expenseDate: expenseDate
+    housing: null, insurance: null, transportation: null, food: null, savings: null, utilities: null, personal: null, name: expenseName, [category]: expenseAmount, expenseDate: expenseDate
   },
     {
       where: { id: req.params.id, user_id: req.session.user_id }

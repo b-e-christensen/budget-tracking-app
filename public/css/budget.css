@@ -1,0 +1,42 @@
+label {
+    min-width: 7rem;
+    max-width: 8rem;
+}
+.budget-input {
+    margin-left: 4rem;
+}
+.center-budget-table {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50rem;
+}
+
+.center-budget {
+    text-align: center;
+}
+
+.button-budget {
+    max-width: 12rem;
+    min-width: 12rem;
+    text-align: center;
+    margin-left: 2rem;
+    margin-right: 5rem;
+}
+
+#budBtn {
+    margin-left: 2rem;
+    margin-right: 5rem;
+}
+
+#name{
+    outline: none;
+    border: none;
+}
+
+#budget-refresh-btn {
+    margin: 5pt;
+    padding: 6pt;
+    color: #9e9e9f;
+    background-color: #0a0944;
+    border: .5 solid #000000;
+}

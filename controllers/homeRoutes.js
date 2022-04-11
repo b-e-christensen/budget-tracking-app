@@ -50,39 +50,27 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/expenses', withAuth, async (req, res) => {
-    try {
-    const expenseData = await Expense.findAll({
-        where: {
-            user_id: req.session.user_id
-        }
-    })   
-    const expenses = expenseData.map((expense) => expense.get({ plain: true }));
-    res.render('expenses', {
-        expenses
-    });
-    } catch (err) {
-        res.status(500).json(err)
-    }
+    res.render('expenses');
 })
 
 router.get('/budget', withAuth, (req, res) => {
     res.render('budget', {logged_in: req.session.logged_in});
 })
 
-router.get('/calendar', (req, res) => {
+router.get('/calendar', withAuth, (req, res) => {
     res.render('calendar');
 })
 
-router.get('/income', (req, res) => {
-    res.render('income');
+router.get('/income', withAuth, (req, res) => {
+    res.render('income')
 })
 
-router.get('/first-budget', (req, res) => {
-    res.render('first-budget');
+router.get('/first-budget', withAuth, (req, res) => {
+    res.render('first-budget')
 })
 
-router.get('/news', (req, res) => {
-    res.render('news');
+router.get('/news', withAuth, (req, res) => {
+    res.render('news')
 })
 
 

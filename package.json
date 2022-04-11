@@ -7,6 +7,8 @@
     "express-handlebars": "^6.0.3",
     "express-session": "^1.17.2",
     "fullcalendar": "^5.10.2",
+    "handlebars-dateformat": "^1.1.2",
+    "handlebars-helpers": "^0.10.0",
     "helmet": "^5.0.2",
     "mysql2": "^2.3.3",
     "node-fetch": "^3.2.3",

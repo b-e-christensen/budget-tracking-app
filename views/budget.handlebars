@@ -1,80 +1,76 @@
-<h3 class="budget">Your budget</h3>
+<link rel="stylesheet" href="/css/budget.css">
 
-<section id="budget-section">
-    <div>
-        <label for="name">Budget Name</label>
-        <input class="budget-input" id="name" type="text" readonly>
+    <h3 class="center-budget container flex justify-center">
+    <label for="name">Budget Name</label>
+    <input class="budget-input" id="name" type="text">
+    </h3>
+
+<section id="budget-section" class="bg-gray-50">
+    <table class="bg-gray-50 center-budget-table">
+        <tr>
+            <th class="px-4 py-1 text-md text-black-500 row-name center-budget">Percent of Income</th>
+            <th class="center-budget px-4 py-1 text-md text-black-500 row-name">Dollar Amount</th>
+        </tr>
+        <tr>
+            <td class="px-4 py-1 text-md text-black-500 row-name center-budget"><label for="housing">Housing</label>
+                <input class="budget-input" id="housing" type="text">&#37;
+            </td>
+            <td id="housing-amount" class="px-4 py-1 text-md text-black-500 row-name center-budget"></td>
+        </tr>
+        <tr>
+            <td class="center-budget px-4 py-1 text-md text-black-500 row-name center-budget"><label for="insurance">Insurance</label>
+                <input class="budget-input " id="insurance" type="text">&#37;
+            </td>
+            <td class="center-budget px-4 py-1 text-md text-black-500 row-name" id="insurance-amount"></td>
+            </td>
+        </tr>
+        <tr>
+            <td class="center-budget px-4 py-1 text-md text-black-500 row-name">
+                <label for="transportation">Transportation</label>
+                <input class="budget-input" id="transportation" type="text">&#37;
+            </td>
+            <td id="transportation-amount" class="center-budget px-4 py-1 text-md text-black-500 row-name"></td>
+            </td>
+        </tr>
+        <tr>
+            <td class="center-budget px-4 py-1 text-md text-black-500 row-name">
+                <label for="food">Food</label>
+                <input class="budget-input" id="food" type="text">&#37;
+            </td>
+            <td id="food-amount" class="center-budget px-4 py-1 text-md text-black-500 row-name"></td>
+            </td>
+        </tr>
+        <tr>
+            <td class="center-budget px-4 py-1 text-md text-black-500 row-name">
+                <label for="savings">Savings</label>
+                <input class="budget-input" id="savings" type="text">&#37;
+            <td id="savings-amount" class="center-budget px-4 py-1 text-md text-black-500 row-name"></td>
+            </td>
+            </td>
+        </tr>
+        <tr>
+            <td class="center-budget px-4 py-1 text-md text-black-500 row-name">
+                <label for="utilities">Utilities</label>
+                <input class="budget-input" id="utilities" type="text">&#37;
+            </td>
+            <td id="utilities-amount" class="center-budget px-4 py-1 text-md text-black-500 row-name"></td>
+            </td>
+        </tr>
+        <tr>
+            <td class="center-budget px-4 py-1 text-md text-black-500 row-name">
+                <label for="personal">Personal</label>
+                <input class="budget-input" id="personal" type="text">&#37;
+            </td>
+            <td id="personal-amount" class="center-budget px-4 py-1 text-md text-black-500 row-name"></td>
+            </td>
+        </tr>
+    </table>
+    <div id="budBtn" class="center-budget">
+        <button id="budget-refresh-btn" class="button-budget">Refresh Saved Budget</button>
+        <button id="budget-save-btn" class="button-budget">Update Budget</button>
     </div>
-    <div>
-        <label for="housing">Housing</label>
-        <input class="budget-input" id="housing" type="text" readonly>
-    </div>
-    <div>
-        <label for="insurance">Insurance</label>
-        <input class="budget-input" id="insurance" type="text" readonly>
-    </div>
-    <div>
-        <label for="transportation">Transportation</label>
-        <input class="budget-input" id="transportation" type="text" readonly>
-    </div>
-    <div>
-        <label for="food">Food</label>
-        <input class="budget-input" id="food" type="text" readonly>
-    </div>
-    <div>
-        <label for="savings">Savings</label>
-        <input class="budget-input" id="savings" type="text" readonly>
-    </div>
-    <div>
-        <label for="utilities">Utilities</label>
-        <input class="budget-input" id="utilities" type="text" readonly>
-    </div>
-    <div>
-        <label for="personal">Personal</label>
-        <input class="budget-input" id="personal" type="text" readonly>
-    </div>
-      <div id="budBtn">
-        <button id="budget-edit-btn">Edit</button>
-        <button id="budget-save-btn" class="hidden">Save</button>
-      </div>
 </section>
 
-<br>
 
- 
-
-<main class="container-fluid">
-  <div class="container flex justify-center mx-auto">
-    <section>
-        <div class="flex flex-col">
-        <div class="table-responsive">
-            <div class="w-full">
-            <div class="border-b border-gray-200 shadow">
-                <table>
-                <thead class="bg-gray-50">
-                  <tr>
-                    <th class="px-4 py-1 text-md text-black-500 row-name"id= "date">Date</th>
-                    <th class="px-4 py-1 text-md text-black-5000 row-name" id= "bud-name">Budget Name</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "housing">Housing</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "insurance">Insurance</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "transportation">Transportation</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "food">Food</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "savings">Savings</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "utilities">Utilities</th>
-                    <th class="px-4 py-1 text-md text-black-500 row-name" id= "personal">Personal</th>
-                  </tr>
-                </thead>                
-                    <tbody id="table-body">
-                    </tbody>
-                </table>
-            </div>
-            </div>
-        </div>
-        </div>
-    </section>
-  </div>
-</main>
-
-
-
+<script src="/js/budget-helper.js"></script>
 <script src="/js/budget.js"></script>
