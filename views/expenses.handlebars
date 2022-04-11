@@ -1,43 +1,44 @@
-<div class="row">
-  <div class="col-md-6">
-
-    <h2 id="expenses">MONTHLY EXPENSES</h2>
-
-<form class="MonthlyExpenses" id="submitexpense">
-  <div class="form-group">
-    <label for="MONTHLY EXPENSES"></label>
-            {{!-- <input class="form-input" type="text" id="monthly-expenses"> --}}
-  </div>
-
- <label for="nameofexpense">Name of expense:</label>
-  <input type="text" id="nameofexpense" name="nameofexpense"><br><br>
-    
-<label for="expensecategory">Choose a category:</label>
-<select id="expensecategory">
-  <option value="housing">Housing</option>
-  <option value="insurance">Insurance</option>
-  <option value="transportation">Transportation</option>
-  <option value="food">Food</option>
-  <option value="savings">Savings</option>
-  <option value="utilities">Utilities</option>
-  <option value="personal">Personal</option>
-</select>
-  <label for="amount">Cost of expense:</label>
-  <input type="text" id="costofexpense" name="costofexpense"><br><br>
-  <input type="date" id="date">
-  <div id="status"></div>
-  <input id="expBtn" type="submit" value="Submit">
-</form>
-
-
-<main class="container-fluid">
+<main class="container-fluid display-flex flex-column justify-center align-center">
+      <h4 id="expenses">Enter Expenses</h4>
   <div class="container flex justify-center mx-auto">
     <section>
         <div class="flex flex-col">
         <div class="table-responsive">
             <div class="w-full">
             <div class="border-b border-gray-200 shadow">
-              <form id="expenses-by-date">
+              <div class="table-div">
+              <table>
+                <tr>
+                <th class="px-4 py-1 text-md text-black-5000 row-name">Expense Name</th>
+                <th class="px-4 py-1 text-md text-black-500 row-name">Category</th>
+                <th class="px-4 py-1 text-md text-black-500 row-name">Cost</th>
+                <th class="px-4 py-1 text-md text-black-500 row-name">Date</th>
+                <th class="px-4 py-1 text-md text-black-500 row-name">Submit</th>
+                </tr>
+                <form class="MonthlyExpenses" id="submitexpense">
+                <tr>
+                  <td><label for="nameofexpense"></label>
+                  <input type="text" id="nameofexpense" name="nameofexpense"></td>
+                  <td><label for="expensecategory"></label>
+                    <select id="expensecategory">
+                      <option value="housing">Housing</option>
+                      <option value="insurance">Insurance</option>
+                      <option value="transportation">Transportation</option>
+                      <option value="food">Food</option>
+                      <option value="savings">Savings</option>
+                      <option value="utilities">Utilities</option>
+                      <option value="personal">Personal</option>
+                    </select></td>
+                    <td><label for="amount"></label>
+                      <input type="text" id="costofexpense" name="costofexpense"></td>
+                    <td><input type="date" id="date"></td>
+                    <td><input class="expBtn" type="submit" value="Submit"></td>
+                </tr>
+                </form>
+              </table>
+              </div>
+              <h4 class="text-center">Search Previous Expenses By Date</h4>
+              <form id="expenses-by-date" class="text-center">
                 <label for="start-date">Start Date:</label>
                 <input type="date" id="start-date">
 
@@ -45,7 +46,9 @@
                 <input type="date" id="end-date">
 
                 <input id="end-date" type="submit" value="Search">
+                <input type="reset" value="Clear">
               </form>
+              <div class="table-div">
                 <table id="expenses-table">
                     <tr>
                     <th class="px-4 py-1 text-md text-black-5000 row-name" id= "name">Expense Name</th>
@@ -58,6 +61,7 @@
                     <tbody id="table-body">
                     </tbody>
                 </table>
+              </div>
             </div>
             </div>
         </div>

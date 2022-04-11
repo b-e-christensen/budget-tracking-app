@@ -82,21 +82,25 @@
   }
 
   /* Expenses */
-#expenses{
-    padding-left: 55pt;
-}
+
+  .table-div {
+      margin: 20px;
+      padding: 20px;
+  }
 
   .MonthlyExpenses {
       padding-left: 40pt;
   }
 
-  #expBtn {
+  .expBtn {
       padding: 5pt;
-      margin-left: 120pt;
-      margin-top: 15pt;
       color: #9e9e9f;
       background-color: #0a0944;
       border: .5 solid #000000
+  }
+
+  td {
+    text-align: center;
   }
 
   /* news */
