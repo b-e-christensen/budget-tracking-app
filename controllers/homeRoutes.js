@@ -51,23 +51,23 @@ router.get('/expenses', withAuth, async (req, res) => {
     res.render('expenses');
 })
 
-router.get('/budget', (req, res) => {
+router.get('/budget', withAuth, (req, res) => {
     res.render('budget');
 })
 
-router.get('/calendar', (req, res) => {
+router.get('/calendar', withAuth, (req, res) => {
     res.render('calendar');
 })
 
-router.get('/income', (req, res) => {
+router.get('/income', withAuth, (req, res) => {
     res.render('income')
 })
 
-router.get('/first-budget', (req, res) => {
+router.get('/first-budget', withAuth, (req, res) => {
     res.render('first-budget')
 })
 
-router.get('/news', (req, res) => {
+router.get('/news', withAuth, (req, res) => {
     res.render('news')
 })
 
