@@ -1,11 +1,10 @@
 
 async function getExpenses() {
-    const fetchRequest = await fetch('/api/expense', { credentials: 'include' })
+    const fetchRequest = await fetch('/api/expense/thisMonth', { credentials: 'include' })
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data)
         let housing = 0
         let insurance = 0
         let transportation = 0
@@ -88,7 +87,7 @@ async function budgetPieChart() {
   let budgetData = []
   if (budgetSum < 100) {
     let leftOver = 100 - budgetSum
-    budgetData = [leftOver, budget.housing, budget.insurance, budget.tranportation, budget.food, budget.savings, budget.utilities, budget.personal]
+    budgetData = [budget.housing, budget.insurance, budget.tranportation, budget.food, budget.savings, budget.utilities, budget.personal, leftOver]
   } else {
     budgetData = [budget.housing, budget.insurance, budget.tranportation, budget.food, budget.savings, budget.utilities, budget.personal]
   }
@@ -98,37 +97,37 @@ const pieChart = new Chart(ctx, {
     type: 'pie',
     data: {
         labels: [
-            'Non-allocated Funds',
             'Housing',
             'Insurance',
             'Transportation',
             'Food',
             'Savings',
             'Utilities',
-            'Personal'
+            'Personal',
+            'Non-allocated Funds'
           ],
         datasets: [{
             label: 'Budget Breakdown',
             data: budgetData,
            backgroundColor: [
-            'rgb(152, 151, 169, 0.35)',
             'rgba(236, 112, 99, 0.35)',
             'rgba(165, 105, 189, 0.35)',
             'rgba(93, 173, 226, 0.35)',
             'rgba(69, 179, 157, 0.35)',
             'rgba(88, 214, 141, 0.35)',
             'rgba(245, 176, 65, 0.35)',
-            'rgba(220, 118, 51, 0.35)'
+            'rgba(220, 118, 51, 0.35)',
+            'rgb(152, 151, 169, 0.35)'
           ],
           borderColor: [
-            'rgb(152, 151, 169, 1)',
             'rgba(236, 112, 99, 1)',
             'rgba(165, 105, 189, 1)',
             'rgba(93, 173, 226, 1)',
             'rgba(69, 179, 157, 1)',
             'rgba(88, 214, 141, 1)',
             'rgba(245, 176, 65, 1)',
-            'rgba(220, 118, 51, 1)'
+            'rgba(220, 118, 51, 1)',
+            'rgb(152, 151, 169, 1)'            
           ],
             borderWidth: 1
         }]

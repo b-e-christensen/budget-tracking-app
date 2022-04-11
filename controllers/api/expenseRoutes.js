@@ -11,6 +11,27 @@ router.get('/', withAuth, async (req, res) => {
   }).then(result => res.json(result))
 });
 
+router.get('/thisMonth', withAuth, async (req, res) => {
+  const expense = await Expense.findAll({
+    where: { user_id: req.session.user_id }
+  })
+  let expensesInRange =[]
+  for (let i = 0; i < expense.length; i++) {
+    const element = expense[i];
+    let monthOfExpense = element.expenseDate.toString().split(' ')[1];
+    console.log(`month of expense ------>  ${monthOfExpense}`)
+    const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    const d = new Date();
+    let currentMonth = month[d.getMonth()];
+    console.log(`current month -----> ${currentMonth}`)
+    if (monthOfExpense == currentMonth) {
+      expensesInRange.push(element)
+    }
+  }
+  res.status(200).json(expensesInRange)
+  
+})
+
 // Create new Budget
 router.post('/', withAuth, async (req, res) => {
   const approvedCategories = ["housing", "insurance", "transportation", "food", "savings", "utilities", "personal"]
@@ -63,14 +84,15 @@ router.get('/date/:startDate/:endDate', async (req, res) => {
               ['expenseDate', 'DESC']
           ],
         })
-        const startDate = new Date(start)
-        const endDate = new Date(end)
+        let startDate = new Date(start)
+        let endDate = new Date(end)
     
         let expensesInRange = []
           for (let i = 0; i < expenseData.length; i++) {
               const element = expenseData[i];
-              const date = element.expenseDate;
-              if (date > startDate && date < endDate) {
+              let date = element.expenseDate;
+              console.log(date)
+              if (date >= startDate && date <= endDate) {
                 expensesInRange.push(element)
               }
             }

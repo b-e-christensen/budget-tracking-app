@@ -8,5 +8,3 @@ dateTime.textContent = new Date().toLocaleDateString("en-US", {
   hour: "numeric",
   minute: "numeric"
 });
-
-

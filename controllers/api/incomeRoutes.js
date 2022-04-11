@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Income} = require('../../models');
+const {Income, Budget} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // GET income that ties to users Auth 
@@ -19,6 +19,7 @@ router.post('/', withAuth, async (req, res) => {
     return
   }
   await Income.create({salary: req.body.salary, user_id: req.session.user_id}).then(res.json({created: true}))
+  await Budget.create({name: 'My Budget', housing: 0, insurance: 0, transportation: 0, food: 0, savings: 0, utilities: 0, personal: 0, user_id: req.session.user_id})
 });
 
 // Update by salary ID
