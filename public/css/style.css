@@ -128,17 +128,15 @@ img {
 .card-news-img:hover {
     box-shadow:  25px 15px 45px 15px #23235b;
     transform: translate3d(0px, -15px, 0px);
-    
-} 
-
-img:hover {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%); 
-}
+    cursor: pointer;
+} 
 
 .text {
     color: #000000;
     text-decoration: none;
+    cursor: default;
 }
 
 
