@@ -27,6 +27,7 @@ async function getApi() {
         
         let hTitle = document.createElement('p')
         hTitle.classList.add('news-text')
+        hTitle.id
         hTitle.textContent = element.title
 
 
