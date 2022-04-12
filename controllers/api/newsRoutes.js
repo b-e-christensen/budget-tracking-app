@@ -5,19 +5,19 @@ router.get('/', async (req, res) => {
     const newsapi = new NewsAPI(process.env.API_KEY);
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
-newsapi.v2.topHeadlines({
-  q: 'bitcoin',
-  category: 'business',
+const dateObj = new Date();
+const month = dateObj.getUTCMonth() + 1
+const day = dateObj.getUTCDate() - 7
+const year = dateObj.getUTCFullYear()
+let date = `${year}-${month}-${day}`
+console.log(date)
+newsapi.v2.everything({
+  q: 'finance, personal',
+  from: date,
   language: 'en',
-  country: 'us'
+  sortBy: 'relevancy'
 }).then(response => {
   res.json(response);
-  /*
-    {
-      status: "ok",
-      articles: [...]
-    }
-  */
 }).catch(err => {console.log(err)})
 })
 
