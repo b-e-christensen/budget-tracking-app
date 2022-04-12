@@ -14,7 +14,7 @@ router.get('/', withAuth, async (req, res) => {
 router.post('/', withAuth, async (req, res) => {
   const budgetName = req.body.budget_name;
   const budgetAmount = Number(req.body.budget_amount);
-  // const targetDate = req.body.target_date;
+
   // Error check for budget name 
   if (!budgetName) {
     res.json({ error: "Must provide a budget name" })
@@ -29,11 +29,7 @@ router.post('/', withAuth, async (req, res) => {
     res.json({ error: "Must provide a value for all categories" })
     return
   }
-  // Error check for target date  TO DO - once we see date format better error checking 
-  // if (!targetDate) {
-  //   res.send("Error: Must provide a target date")
-  //   return
-  // }
+
   await Budget.create({ name: budgetName, housing: req.body.housing, insurance: req.body.insurance, transportation: req.body.transportation, food: req.body.food, savings: req.body.savings, utilities: req.body.utilities, personal: req.body.personal, budgetDate: req.body.date, user_id: req.session.user_id }).then(success => {
     if (success) {
       res.json({ created: true })
@@ -55,7 +51,7 @@ router.get('/:id', withAuth, async (req, res) => {
 router.put('/:id', withAuth, async (req, res, next) => {
   const budgetName = req.body.budget_name;
   const budgetAmount = Number(req.body.budget_amount);
-  // const targetDate = req.body.target_date;
+
   // Error check for budget name 
   if (!budgetName) {
     res.json({ error: "Must provide a budget name" })
