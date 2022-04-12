@@ -40,7 +40,7 @@ const pieChart = new Chart(ctx, {
         datasets: [{
             label: 'Budget Breakdown',
             // will need to change data variables once it is more clear how this data will be returned
-            data: [{{user.budget.housing}}, {{user.budget.insurance}}, {{user.budget.transportation}}, {{user.budget.food}}, {{user.budget.savings}}, {{user.budget.utilities}}, {{user.budget.personal}}],
+            data: [{{user.income.salary}} * {{user.budget.housing}} / 100, {{user.budget.insurance}}, {{user.budget.transportation}}, {{user.budget.food}}, {{user.budget.savings}}, {{user.budget.utilities}}, {{user.budget.personal}}],
            backgroundColor: [
             'rgba(236, 112, 99, 0.35)',
             'rgba(165, 105, 189, 0.35)',
