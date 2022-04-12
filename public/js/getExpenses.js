@@ -165,9 +165,10 @@ function newRow(param1, param2, param3, param4, param5) {
     const col5 = document.createElement('td')
     col5.classList.add('generated-td')
     const editButton = document.createElement('button')
-    editButton.textContent = 'Edit'
+    editButton.textContent = 'Save edit'
     editButton.setAttribute('value', param5)
     editButton.addEventListener('click', editExpense)
+    editButton.classList.add('expBtn')
     tableRow.appendChild(col5)
     col5.appendChild(editButton)
 
@@ -177,6 +178,7 @@ function newRow(param1, param2, param3, param4, param5) {
     deleteButton.textContent = 'Delete'
     deleteButton.setAttribute('value', param5)
     deleteButton.addEventListener('click', deleteExpense)
+    deleteButton.classList.add('expBtn')
     tableRow.appendChild(col6)
     col6.appendChild(deleteButton)
 }
@@ -203,8 +205,8 @@ async function getExpensesByDate() {
     let expensesArr =[]
     const start = document.getElementById('start-date').value
     const end = document.getElementById('end-date').value
-    const startDate = new Date(start)
-    const endDate = new Date(end)
+    let startDate = new Date(start)
+    let endDate = new Date(end)
 
     const fetchRequest = await fetch(`/api/expense/date/${startDate}/${endDate}`, {
       headers: { 'Content-Type': 'application/json' },
@@ -226,11 +228,17 @@ async function getExpensesByDateForm(e) {
     e.preventDefault()
   
     let expensesArr =[]
+    let startDate
+    let endDate
     const start = document.getElementById('start-date').value
     const end = document.getElementById('end-date').value
-    const startDate = new Date(start)
-    const endDate = new Date(end)
-
+    if (!start && !end){
+        startDate = 0
+        endDate = 0
+    } else {
+        startDate = new Date(start)
+        endDate = new Date(end)
+    }
     const fetchRequest = await fetch(`/api/expense/date/${startDate}/${endDate}`, {
       headers: { 'Content-Type': 'application/json' },
     }).then(function (response) {

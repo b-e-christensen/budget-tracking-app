@@ -11,6 +11,31 @@ router.get('/', withAuth, async (req, res) => {
   }).then(result => res.json(result))
 });
 
+router.get('/thisMonth', withAuth, async (req, res) => {
+  const expense = await Expense.findAll({
+    where: { user_id: req.session.user_id }
+  })
+  let expensesInRange =[]
+  for (let i = 0; i < expense.length; i++) {
+    const element = expense[i];
+    let dateOfExpense = new Date (element.expenseDate)
+    var day = 60 * 60 * 24 * 1000;
+    var endDate = new Date(dateOfExpense.getTime() + day);
+    let monthOfExpense = endDate.toString().split(' ')[1];
+    console.log(`element dateOfExpense ------>  ${dateOfExpense}`)
+    console.log(`element endDate ------>  ${monthOfExpense}`)
+    const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    const d = new Date();
+    let currentMonth = month[d.getMonth()];
+    console.log(`current month -----> ${currentMonth}`)
+    if (monthOfExpense == currentMonth) {
+      expensesInRange.push(element)
+    }
+  }
+  res.status(200).json(expensesInRange)
+  
+})
+
 // Create new Budget
 router.post('/', withAuth, async (req, res) => {
   const approvedCategories = ["housing", "insurance", "transportation", "food", "savings", "utilities", "personal"]
@@ -20,8 +45,7 @@ router.post('/', withAuth, async (req, res) => {
   const categoryReq = req.body.category;
   const expenseDate = req.body.date;
   const category = categoryReq.toLowerCase();
-  // const vendor = req.body.vendor;
-  // const date = req.body.date;
+
   // Error check for expense name 
   if (!expenseName) {
     res.json({error: "Must provide a expense name"})
@@ -32,7 +56,7 @@ router.post('/', withAuth, async (req, res) => {
     res.json({error: "Must enter a expense amount"})
     return
   }
-  // Error check for target date  TO DO - once we see date format better error checking 
+
    if (!expenseDate) {
      res.json({error: "Must provide a date"})
      return
@@ -50,9 +74,8 @@ router.post('/', withAuth, async (req, res) => {
   })
 });
 
-router.get('/date/:startDate/:endDate', async (req, res) => {
+router.get('/date/:startDate/:endDate', withAuth, async (req, res) => {
   try {
-    
     const start = req.params.startDate
     const end = req.params.endDate
       const expenseData = await Expense.findAll({
@@ -63,22 +86,32 @@ router.get('/date/:startDate/:endDate', async (req, res) => {
               ['expenseDate', 'DESC']
           ],
         })
-        const startDate = new Date(start)
-        const endDate = new Date(end)
-    
+        let startDate
+        let endDate
         let expensesInRange = []
-          for (let i = 0; i < expenseData.length; i++) {
-              const element = expenseData[i];
-              const date = element.expenseDate;
-              if (date > startDate && date < endDate) {
-                expensesInRange.push(element)
-              }
-            }
+        if(start != 0 && end != 0){
+        startDate = new Date(start)
+        endDate = new Date(end)
+        for (let i = 0; i < expenseData.length; i++) {
+          const element = expenseData[i];
+          let date = element.expenseDate;
+          console.log(date)
+          if (date >= startDate && date <= endDate) {
+            expensesInRange.push(element)
+          }
+        }
+      } else {
+        for (let i = 0; i < expenseData.length; i++) {
+          const element = expenseData[i];
+          expensesInRange.push(element)
+        }
+      }
+    
       res.status(200).json(expensesInRange)
 
   } catch (err) {
       console.log(err)
-      res.status(500).json(err)
+      res.status(500).json(err.message)
   }
 })
 
