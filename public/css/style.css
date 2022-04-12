@@ -36,123 +36,110 @@
     left: 15pt;
     font-size: 20pt;
     color: #040404;
-  } 
+} 
   
-  .nav-item {
+.nav-item {
     position: absolute;
     top: 40pt;
     left: 60pt;
     list-style: none;
-  } 
+} 
 
-  /* budget */
+/* budget */
 
-  .budget {
+.budget {
     padding-bottom: 8pt;
     padding-left: 110pt;
 }
   
-  #budget-section{
+#budget-section{
       padding-left: 45pt;
-  }
+}
 
-  .budget-input {
-      margin: 4pt;
-      padding: 2pt;
-  }
+.budget-input {
+    margin: 4pt;
+    padding: 2pt;
+}
 
-  #budget-edit-btn {
-      margin: 5pt;
-      padding: 6pt;
-      color: #9e9e9f;
-      background-color: #0a0944;
-      border: .5 solid #000000
-  }
-  #budget-save-btn {
-      margin: 5pt;
-      padding: 6pt;
-      color: #9e9e9f;
-      background-color: #0a0944;
-      border: .5 solid #000000
-  }
+#budget-edit-btn {
+    margin: 5pt;
+    padding: 6pt;
+    color: #9e9e9f;
+    background-color: #0a0944;
+    border: .5 solid #000000
+}
 
-  #budBtn {
-      margin-top: 10pt;
-      margin-left: 65pt;
-  }
+#budget-save-btn {
+    margin: 5pt;
+    padding: 6pt;
+    color: #9e9e9f;
+    background-color: #0a0944;
+    border: .5 solid #000000
+}
 
-  /* Expenses */
+#budBtn {
+    margin-top: 10pt;
+    margin-left: 65pt;
+}
 
-  .table-div {
-      margin: 20px;
-      padding: 20px;
-  }
+/* Expenses */
 
-  .MonthlyExpenses {
-      padding-left: 40pt;
-  }
+.table-div {
+    margin: 20px;
+    padding: 20px;
+}
 
-  .expBtn {
-      padding: 5pt;
-      color: #9e9e9f;
-      background-color: #0a0944;
-      border: .5 solid #000000
-  }
+.MonthlyExpenses {
+    padding-left: 40pt;
+}
 
-  td {
+.expBtn {
+    padding: 5pt;
+    color: #9e9e9f;
+    background-color: #0a0944;
+    border: .5 solid #000000
+}
+
+td {
     text-align: center;
-  }
+}
 
-  /* news */
-  .card {
-      border: none;
-      padding: 25px;
-  }
+ /* news */
+.card {
+    border: none;
+    padding: 25px;
+}
 
-  .card-news-img {
-      width: 80%;
-      
-  }
+.card-news-img {
+    width: 80%;
+}
 
-  img {
+img {
     margin: 5px; 
     padding-left: 0px;
     padding-right: 0px;
     border: 1px solid #eee;
-    box-shadow: #00000042 0px 19px 43px;
+    box-shadow: #bd242442 0px 19px 43px;
     transition: all .3s ease-in-out;
-    margin-right: 20pt;
-  }
+    margin-right: 30pt;
+    border-radius: 3pt;
+}
   
-  img:hover {
-    box-shadow: #00000085 0px 39px 43px;
-    transform: translate3d(0px, -5px, 0px);
+.card-news-img:hover {
+    box-shadow:  25px 15px 45px 15px #23235b;
+    transform: translate3d(0px, -15px, 0px);
+    
+} 
+
+img:hover {
     -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-  }
+    filter: grayscale(100%); 
+}
 
-  .text {
-      color: #000000;
-      text-decoration: none;
-  }
+.text {
+    color: #000000;
+    text-decoration: none;
+}
 
-  .news-text:hover {
-      animation: vibrate 0.5s;
-      animation-iteration-count: infinite;
- }
-
- @keyframes vibrate {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(-1deg); }
-    20% { transform: rotate(1deg); }
-    30% { transform: rotate(0deg); }
-    40% { transform: rotate(1deg); }
-    50% { transform: rotate(-1deg); }
-    60% { transform: rotate(0deg); }
-    70% { transform: rotate(-1deg); }
-    80% { transform: rotate(1deg); }
-    90% { transform: rotate(0deg); }
-    100% { transform: rotate(-1deg); }
-  }
 
 
