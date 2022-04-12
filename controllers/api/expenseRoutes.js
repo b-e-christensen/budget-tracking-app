@@ -45,8 +45,7 @@ router.post('/', withAuth, async (req, res) => {
   const categoryReq = req.body.category;
   const expenseDate = req.body.date;
   const category = categoryReq.toLowerCase();
-  // const vendor = req.body.vendor;
-  // const date = req.body.date;
+
   // Error check for expense name 
   if (!expenseName) {
     res.json({error: "Must provide a expense name"})
@@ -57,7 +56,7 @@ router.post('/', withAuth, async (req, res) => {
     res.json({error: "Must enter a expense amount"})
     return
   }
-  // Error check for target date  TO DO - once we see date format better error checking 
+  
    if (!expenseDate) {
      res.json({error: "Must provide a date"})
      return
