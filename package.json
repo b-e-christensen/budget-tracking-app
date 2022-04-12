@@ -11,6 +11,7 @@
     "handlebars-helpers": "^0.10.0",
     "helmet": "^5.0.2",
     "mysql2": "^2.3.3",
+    "newsapi": "^2.4.1",
     "node-fetch": "^3.2.3",
     "sequelize": "^6.17.0"
   },
