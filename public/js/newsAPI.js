@@ -1,12 +1,11 @@
 async function getApi() {
-    fetch('https://newsapi.org/v2/everything?q=finance+personal&language=en&apiKey=' + process.env.API_KEY)
+    fetch('https://newsapi.org/v2/everything?q=finance+personal&language=en&apiKey=043db38b8cec4ff9a5a9337db68f65b7')
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
     for (let i = 0; i < 20; i++) {
         const element = data.articles[i];
-        console.log(element)
 
         let parentDiv = document.getElementById('append-to')
 
