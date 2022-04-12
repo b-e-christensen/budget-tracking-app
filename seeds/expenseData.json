@@ -2,36 +2,26 @@
     {
         "name": "First of the month",
         "housing": 1000,
-        "transportation": 300,
-        "insurance": 100,
         "user_id": 1
     },
     {
         "name": "First of the month",
         "housing": 800,
-        "transportation": 200,
-        "insurance": 100,
         "user_id": 2
     },
     {
         "name": "First of the month",
         "housing": 1200,
-        "transportation": 200,
-        "insurance": 200,
         "user_id": 3
     },
     {
         "name": "First of the month",
         "housing": 1200,
-        "transportation": 250,
-        "insurance": 300,
         "user_id": 4
     },
     {
         "name": "First of the month",
         "housing": 1250,
-        "transportation": 250,
-        "insurance": 250,
         "user_id": 5
     },
     {
