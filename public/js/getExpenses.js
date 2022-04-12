@@ -228,11 +228,17 @@ async function getExpensesByDateForm(e) {
     e.preventDefault()
   
     let expensesArr =[]
+    let startDate
+    let endDate
     const start = document.getElementById('start-date').value
     const end = document.getElementById('end-date').value
-    const startDate = new Date(start)
-    const endDate = new Date(end)
-
+    if (!start && !end){
+        startDate = 0
+        endDate = 0
+    } else {
+        startDate = new Date(start)
+        endDate = new Date(end)
+    }
     const fetchRequest = await fetch(`/api/expense/date/${startDate}/${endDate}`, {
       headers: { 'Content-Type': 'application/json' },
     }).then(function (response) {

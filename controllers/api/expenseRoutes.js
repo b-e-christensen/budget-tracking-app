@@ -76,7 +76,6 @@ router.post('/', withAuth, async (req, res) => {
 
 router.get('/date/:startDate/:endDate', withAuth, async (req, res) => {
   try {
-    
     const start = req.params.startDate
     const end = req.params.endDate
       const expenseData = await Expense.findAll({
@@ -87,18 +86,27 @@ router.get('/date/:startDate/:endDate', withAuth, async (req, res) => {
               ['expenseDate', 'DESC']
           ],
         })
-        let startDate = new Date(start)
-        let endDate = new Date(end)
-    
+        let startDate
+        let endDate
         let expensesInRange = []
-          for (let i = 0; i < expenseData.length; i++) {
-              const element = expenseData[i];
-              let date = element.expenseDate;
-              console.log(date)
-              if (date >= startDate && date <= endDate) {
-                expensesInRange.push(element)
-              }
-            }
+        if(start != 0 && end != 0){
+        startDate = new Date(start)
+        endDate = new Date(end)
+        for (let i = 0; i < expenseData.length; i++) {
+          const element = expenseData[i];
+          let date = element.expenseDate;
+          console.log(date)
+          if (date >= startDate && date <= endDate) {
+            expensesInRange.push(element)
+          }
+        }
+      } else {
+        for (let i = 0; i < expenseData.length; i++) {
+          const element = expenseData[i];
+          expensesInRange.push(element)
+        }
+      }
+    
       res.status(200).json(expensesInRange)
 
   } catch (err) {
