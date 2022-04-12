@@ -56,7 +56,7 @@ router.post('/', withAuth, async (req, res) => {
     res.json({error: "Must enter a expense amount"})
     return
   }
-  
+
    if (!expenseDate) {
      res.json({error: "Must provide a date"})
      return
@@ -74,7 +74,7 @@ router.post('/', withAuth, async (req, res) => {
   })
 });
 
-router.get('/date/:startDate/:endDate', async (req, res) => {
+router.get('/date/:startDate/:endDate', withAuth, async (req, res) => {
   try {
     
     const start = req.params.startDate
@@ -103,7 +103,7 @@ router.get('/date/:startDate/:endDate', async (req, res) => {
 
   } catch (err) {
       console.log(err)
-      res.status(500).json(err)
+      res.status(500).json(err.message)
   }
 })
 
