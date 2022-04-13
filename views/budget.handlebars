@@ -1,9 +1,17 @@
 <link rel="stylesheet" href="/css/budget.css">
 
-    <h3 class="center-budget container flex justify-center">
+<div class="col-12 flex-column align-center justify-center flex-no-wrap m-3">
+    <h4 class="center-budget container display-flex justify-center">
+    <label for="name">Monthly Income</label>
+    <input class="budget-input" id="income"type="text">
+    </h4>
+    <button id="income-save-btn" class="button-budget expBtn">Update Income</button>
+</div>
+
+    <h4 class="center-budget container flex justify-center">
     <label for="name">Budget Name</label>
     <input class="budget-input" id="name" type="text">
-    </h3>
+    </h4>
 
 <section id="budget-section" class="bg-gray-50">
     <table class="bg-gray-50 center-budget-table">
