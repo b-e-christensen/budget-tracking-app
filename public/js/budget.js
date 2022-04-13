@@ -109,7 +109,7 @@ const saveIncome = async () => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ salary })
-    }).then(resp => { writeIncome(); return resp.json() }).catch(err => console.error(err))
+    }).then(resp => { writeIncome(); writeBudget(); return resp.json() }).catch(err => console.error(err))
 }
 
 // event listens for edit and saving 
