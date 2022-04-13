@@ -8,8 +8,8 @@ const getUserBudget = async () => {
 // API Get User Income 
 const getUserIncome = async () => {
     const income = await fetch('/api/income', { credentials: 'include' }).then(response => { return response.json() }).catch(err => console.error(err))
-    const salary = income[0].salary
-    return salary
+    // const salary = income[0].salary
+    return income
 }
 
 // Function to return decimal for percent calc
@@ -25,6 +25,7 @@ const decimal = async (num) => {
 // Function to calculate percentage from income
 const calcAmount = async () => {
     const salary = await getUserIncome()
+    const monthlyIncome = salary[0].salary
     const budgetRe = await getUserBudget()
     const arry = Object.keys(budgetRe[0])
     for (let index = 2; index < arry.length - 2; index++) {
@@ -33,7 +34,7 @@ const calcAmount = async () => {
         const dec = await decimal(budgetElValue)
         const elId = element + '-amount'
         const budgetAmountEl = document.getElementById(elId)
-        const dollarAmount = dec * salary
+        const dollarAmount = dec * monthlyIncome
         budgetAmountEl.innerText = '$ ' + String(dollarAmount)
     }
 }
@@ -53,6 +54,12 @@ const writeBudget = async () => {
     document.getElementById('personal').value = budget.personal
     calcAmount()
     return budget.id
+}
+
+// Writes user income to the page
+const writeIncome = async () => {
+    const monthlyIncome = await getUserIncome()
+    document.getElementById('income').value = monthlyIncome[0].salary
 }
 
 // Makes API call to save data 
@@ -92,7 +99,21 @@ const saveBudget = async () => {
     }).then(resp => { writeBudget(); return resp.json() }).catch(err => console.error(err))
 }
 
+const saveIncome = async () => {
+    const salary = document.getElementById('income').value
+    const income = await getUserIncome()
+    const response = await fetch(`/api/income/${income[0].id}`, {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ salary })
+    }).then(resp => { writeIncome(); return resp.json() }).catch(err => console.error(err))
+}
+
 // event listens for edit and saving 
+document.getElementById('income-save-btn').addEventListener('click', saveIncome)
 document.getElementById('budget-save-btn').addEventListener('click', saveBudget)
 document.getElementById('budget-refresh-btn').addEventListener('click', writeBudget)
 
@@ -101,4 +122,5 @@ inputEls.forEach(element => {
     element.addEventListener('change', calcAmount)
 });
 
+writeIncome()
 writeBudget()
